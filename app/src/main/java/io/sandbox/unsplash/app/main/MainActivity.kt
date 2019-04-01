@@ -1,13 +1,9 @@
 package io.sandbox.unsplash.app.main
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import io.sandbox.unsplash.R
+import io.sandbox.unsplash.app.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+    override val layoutResId: Int? = R.layout.activity_main
 }
