@@ -22,19 +22,19 @@ abstract class BaseFragment : DaggerFragment(), LayoutOwner {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        layoutResId?.let { inflater.inflate(it, container, false) }
+            layoutResId?.let { inflater.inflate(it, container, false) }
 
     protected inline fun <reified VM : ViewModel> Fragment.fromFragment(
-        provider: ViewModelProvider.Factory,
-        fragment: Fragment = this
+            provider: ViewModelProvider.Factory,
+            fragment: Fragment = this
     ) = ViewModelProviders.of(fragment, provider).get(VM::class.java)
 
     protected inline fun <reified VM : ViewModel> Fragment.fromActivity(provider: ViewModelProvider.Factory) =
-        ViewModelProviders.of(requireActivity(), provider).get(VM::class.java)
+            ViewModelProviders.of(requireActivity(), provider).get(VM::class.java)
 
     protected fun <T> LiveData<T>.safeObserve(callback: (T) -> Unit) =
-        observe(this@BaseFragment, Observer<T> { it?.run(callback) })
+            observe(this@BaseFragment, Observer<T> { it?.run(callback) })
 
     protected fun <T> LiveData<T>.observe(callback: (T?) -> Unit) =
-        observe(this@BaseFragment, Observer<T> { callback(it) })
+            observe(this@BaseFragment, Observer<T> { callback(it) })
 }

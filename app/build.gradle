@@ -31,8 +31,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //kt
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.core:core-ktx:$rootProject.ktx"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kt"
+    implementation "androidx.core:core-ktx:$ktx"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$ktCoroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$ktCoroutines"
 
     //android
     implementation 'androidx.core:core-ktx:1.0.1'
@@ -43,16 +45,16 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.0.0"
 
     //architecture components
-    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycle"
-    implementation "androidx.lifecycle:lifecycle-common-java8:$rootProject.lifecycle"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.viewModelKtx"
-    kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtx"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle"
 
     //dagger (dependency injection library)
-    implementation "com.google.dagger:dagger-android:$rootProject.dagger"
-    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger"
-    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger"
-    kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger"
+    implementation "com.google.dagger:dagger-android:$dagger"
+    implementation "com.google.dagger:dagger-android-support:$dagger"
+    kapt "com.google.dagger:dagger-compiler:$dagger"
+    kapt "com.google.dagger:dagger-android-processor:$dagger"
 
     //utils
     implementation 'com.jakewharton.timber:timber:4.7.1'
