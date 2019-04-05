@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/fragmentHome">
+
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="io.sandbox.unsplash.app.main.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_main_nav_home_to_numberFragment"
+            app:destination="@id/titleFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentSearch"
+        android:name="io.sandbox.unsplash.app.main.blank.BlankFragment"
+        android:label="BlankFragment" />
+
+    <fragment
+        android:id="@+id/fragmentUser"
+        android:name="io.sandbox.unsplash.app.main.blank.BlankFragment"
+        android:label="BlankFragment" />
+
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="io.sandbox.unsplash.app.main.home.title.TitleFragment"
+        android:label="TitleFragment"
+        tools:layout="@layout/fragment_title">
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

@@ -1,6 +1,7 @@
 package io.sandbox.unsplash.app.base
 
 import androidx.annotation.CallSuper
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -25,9 +26,11 @@ abstract class BaseViewModel(private val dispatcher: JobDispatcher = JobDispatch
     @CallSuper
     protected open fun onError(error: Throwable) = Timber.e(error)
 
-    protected fun <T> launchOnIO(onError: (Throwable) -> Unit = this@BaseViewModel::onError,
-                                 onSuccess: (T) -> Unit = {},
-                                 block: suspend () -> T) {
+    protected fun <T> launchOnIO(
+            onError: (Throwable) -> Unit = this@BaseViewModel::onError,
+            onSuccess: (T) -> Unit = {},
+            block: suspend () -> T
+    ) {
         launch {
             try {
                 val kek = withContext(dispatcher.io()) { block() }
@@ -37,4 +40,6 @@ abstract class BaseViewModel(private val dispatcher: JobDispatcher = JobDispatch
             }
         }
     }
+
+    protected fun <T> mutableLiveData(initialValue: T) = MutableLiveData<T>().apply { value = initialValue }
 }

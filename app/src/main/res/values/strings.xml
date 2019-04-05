@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">UnSplash</string>
+
+    <string name="main_page_home">Home</string>
+    <string name="main_page_search">Search</string>
+    <string name="main_page_user">User</string>
 </resources>
