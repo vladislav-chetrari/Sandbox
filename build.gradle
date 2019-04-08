@@ -7,6 +7,8 @@ buildscript {
         lifecycle = '2.0.0'
         viewModelKtx = '2.0.0'
         navigation = '2.0.0'
+        retrofit = '2.5.0'
+        glide = '4.9.0'
     }
     repositories {
         google()

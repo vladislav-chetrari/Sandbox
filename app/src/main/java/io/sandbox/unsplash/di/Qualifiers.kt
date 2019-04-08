@@ -2,6 +2,7 @@ package io.sandbox.unsplash.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
+import javax.inject.Qualifier
 import javax.inject.Scope
 import kotlin.annotation.AnnotationTarget.FUNCTION
 import kotlin.annotation.AnnotationTarget.PROPERTY_GETTER
@@ -20,3 +21,6 @@ annotation class FragmentScoped
 @Retention
 @MapKey
 annotation class ViewModelKey(val value: KClass<out ViewModel>)
+
+@Qualifier
+annotation class ApiBaseUrl

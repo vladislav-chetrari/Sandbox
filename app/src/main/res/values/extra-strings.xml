@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="api_base_url">https://api.thecatapi.com/v1/images/</string>
+    <string name="user_id">jw3o1l</string>
+</resources>
