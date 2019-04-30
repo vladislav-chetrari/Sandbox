@@ -7,6 +7,7 @@ import io.sandbox.unsplash.app.App
 import io.sandbox.unsplash.di.module.ActivityModule
 import io.sandbox.unsplash.di.module.AppModule
 import io.sandbox.unsplash.di.module.ClientModule
+import io.sandbox.unsplash.di.module.DataSourceFactoryModule
 import io.sandbox.unsplash.di.module.FragmentModule
 import io.sandbox.unsplash.di.module.NetworkModule
 import io.sandbox.unsplash.di.module.ViewModelModule
@@ -21,7 +22,8 @@ import javax.inject.Singleton
         FragmentModule::class,
         ViewModelModule::class,
         NetworkModule::class,
-        ClientModule::class
+        ClientModule::class,
+        DataSourceFactoryModule::class
     ]
 )
 interface AppComponent : AndroidInjector<App> {

@@ -1,6 +1,7 @@
 package io.sandbox.unsplash.app.base
 
 import androidx.annotation.CallSuper
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -17,29 +18,36 @@ abstract class BaseViewModel(private val dispatcher: JobDispatcher = JobDispatch
 
     override val coroutineContext: CoroutineContext = dispatcher.main() + job
 
-    @CallSuper
-    override fun onCleared() {
-        job.cancel()
-        super.onCleared()
+    protected fun <T> liveData(initialValue: T? = null): LiveData<T> {
+        val liveData = MutableLiveData<T>()
+        initialValue?.let(liveData::setValue)
+        return liveData
     }
 
-    @CallSuper
-    protected open fun onError(error: Throwable) = Timber.e(error)
+    protected val <T> LiveData<T>.mutable: MutableLiveData<T>?
+        get() = if (this is MutableLiveData) this else null
 
     protected fun <T> launchOnIO(
-            onError: (Throwable) -> Unit = this@BaseViewModel::onError,
-            onSuccess: (T) -> Unit = {},
-            block: suspend () -> T
+        onError: (Throwable) -> Unit = this@BaseViewModel::onError,
+        onSuccess: (T) -> Unit = {},
+        block: suspend () -> T
     ) {
         launch {
             try {
-                val kek = withContext(dispatcher.io()) { block() }
-                onSuccess(kek)
+                val result = withContext(dispatcher.io()) { block() }
+                onSuccess(result)
             } catch (e: Exception) {
                 onError(e)
             }
         }
     }
 
-    protected fun <T> mutableLiveData(initialValue: T) = MutableLiveData<T>().apply { value = initialValue }
+    @CallSuper
+    protected open fun onError(error: Throwable) = Timber.e(error)
+
+    @CallSuper
+    override fun onCleared() {
+        job.cancel()
+        super.onCleared()
+    }
 }

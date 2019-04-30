@@ -51,6 +51,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtx"
+    implementation "androidx.paging:paging-runtime-ktx:2.1.0"
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle"
 
     //dagger (dependency injection library)

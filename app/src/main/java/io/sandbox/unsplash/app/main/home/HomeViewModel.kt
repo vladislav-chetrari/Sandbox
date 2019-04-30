@@ -1,20 +1,24 @@
 package io.sandbox.unsplash.app.main.home
 
-import androidx.lifecycle.MutableLiveData
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import io.sandbox.unsplash.app.base.BaseViewModel
 import io.sandbox.unsplash.app.base.JobDispatcher
-import io.sandbox.unsplash.data.client.RickAndMortyClient
-import io.sandbox.unsplash.data.model.Character
+import io.sandbox.unsplash.app.datasource.factory.CharacterDataSourceFactory
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
     dispatcher: JobDispatcher,
-    private val client: RickAndMortyClient
+    factory: CharacterDataSourceFactory
 ) : BaseViewModel(dispatcher) {
 
-    val characters = MutableLiveData<List<Character>>()
+    val characters = LivePagedListBuilder(factory, config).build()
 
-    init {
-        launchOnIO(onSuccess = characters::setValue) { client.characters(1) }
+    private companion object {
+        const val PAGE_SIZE = 20
+        val config = PagedList.Config.Builder()
+            .setEnablePlaceholders(true)
+            .setPageSize(PAGE_SIZE)
+            .build()
     }
 }
