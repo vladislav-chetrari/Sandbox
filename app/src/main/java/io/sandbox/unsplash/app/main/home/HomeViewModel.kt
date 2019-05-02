@@ -1,5 +1,6 @@
 package io.sandbox.unsplash.app.main.home
 
+import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import io.sandbox.unsplash.app.base.BaseViewModel
@@ -9,10 +10,20 @@ import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
     dispatcher: JobDispatcher,
-    factory: CharacterDataSourceFactory
+    private val factory: CharacterDataSourceFactory
 ) : BaseViewModel(dispatcher) {
 
     val characters = LivePagedListBuilder(factory, config).build()
+    val progress: LiveData<Boolean> = factory.sourceProgress
+
+    init {
+        factory.sourceError.observeForever(::onError)
+    }
+
+    override fun onCleared() {
+        factory.sourceError.removeObserver(::onError)
+        super.onCleared()
+    }
 
     private companion object {
         const val PAGE_SIZE = 20

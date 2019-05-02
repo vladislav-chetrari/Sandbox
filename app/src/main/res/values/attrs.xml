@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="KeyValuePairView">
+        <attr name="keyText" format="string" />
+        <attr name="valueText" format="string" />
+        <attr name="visibleWhileEmpty" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="CollapsingContainer">
+        <attr name="headerText" format="string" />
+    </declare-styleable>
+
+</resources>

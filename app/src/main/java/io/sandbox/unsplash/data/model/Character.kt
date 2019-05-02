@@ -1,14 +1,16 @@
 package io.sandbox.unsplash.data.model
 
+import com.google.gson.annotations.SerializedName
 import io.sandbox.unsplash.data.model.CharacterStatus.UNKNOWN
 
 data class Character(
-    val id: Int = 0,
+    val id: String = "",
     val name: String = "",
     val status: CharacterStatus = UNKNOWN,
     val species: String = "",
-    val type: String = "",
     val gender: String = "",
     val image: String = "",
+    @SerializedName("episode")
+    val episodes: List<String> = emptyList(),
     val location: NameUrlPair = NameUrlPair()
 )

@@ -11,8 +11,8 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_main_nav_home_to_numberFragment"
-            app:destination="@id/titleFragment"
+            android:id="@+id/action_main_nav_home_to_characterFragment"
+            app:destination="@id/characterFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -30,12 +30,12 @@
         android:label="BlankFragment" />
 
     <fragment
-        android:id="@+id/titleFragment"
-        android:name="io.sandbox.unsplash.app.main.home.title.TitleFragment"
-        android:label="TitleFragment"
-        tools:layout="@layout/fragment_title">
+        android:id="@+id/characterFragment"
+        android:name="io.sandbox.unsplash.app.main.home.character.CharacterFragment"
+        android:label="CharacterFragment"
+        tools:layout="@layout/fragment_character">
         <argument
-            android:name="title"
+            android:name="characterId"
             app:argType="string" />
     </fragment>
 

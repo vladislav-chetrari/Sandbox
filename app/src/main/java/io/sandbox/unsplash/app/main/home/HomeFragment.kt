@@ -2,6 +2,7 @@ package io.sandbox.unsplash.app.main.home
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import io.sandbox.unsplash.R
 import io.sandbox.unsplash.app.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -15,6 +16,7 @@ class HomeFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.characters.safeObserve(listAdapter::submitList)
+        viewModel.progress.safeObserve { progressBar.isVisible = it }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
