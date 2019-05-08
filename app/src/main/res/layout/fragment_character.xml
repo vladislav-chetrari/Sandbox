@@ -50,25 +50,25 @@
             android:visibility="gone"
             tools:visibility="visible">
 
-            <io.sandbox.unsplash.app.widget.KeyValuePairView
+            <io.sandbox.app.widget.KeyValuePairView
                 android:id="@+id/status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:keyText="@string/character_status_label" />
 
-            <io.sandbox.unsplash.app.widget.KeyValuePairView
+            <io.sandbox.app.widget.KeyValuePairView
                 android:id="@+id/species"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:keyText="@string/character_species_label" />
 
-            <io.sandbox.unsplash.app.widget.KeyValuePairView
+            <io.sandbox.app.widget.KeyValuePairView
                 android:id="@+id/gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:keyText="@string/character_gender_label" />
 
-            <io.sandbox.unsplash.app.widget.KeyValuePairView
+            <io.sandbox.app.widget.KeyValuePairView
                 android:id="@+id/location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 app:cardUseCompatPadding="true">
 
-                <io.sandbox.unsplash.app.widget.CollapsingContainer
+                <io.sandbox.app.widget.CollapsingContainer
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/common_8dp"
@@ -91,7 +91,7 @@
                         android:layout_height="wrap_content"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-                </io.sandbox.unsplash.app.widget.CollapsingContainer>
+                </io.sandbox.app.widget.CollapsingContainer>
 
             </androidx.cardview.widget.CardView>
 

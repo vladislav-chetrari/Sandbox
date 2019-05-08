@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UnSplash</string>
+    <string name="app_name">Sandbox</string>
 
     <string name="main_page_pagination">Pagination</string>
     <string name="main_page_multitouch">Multitouch</string>
