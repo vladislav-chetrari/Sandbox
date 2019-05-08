@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/fragmentHome">
+    app:startDestination="@id/fragmentList">
 
     <fragment
-        android:id="@+id/fragmentHome"
-        android:name="io.sandbox.unsplash.app.main.home.HomeFragment"
+        android:id="@+id/fragmentList"
+        android:name="io.sandbox.unsplash.app.main.characters.CharacterListFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home">
+        tools:layout="@layout/fragment_character_list">
         <action
             android:id="@+id/action_main_nav_home_to_characterFragment"
             app:destination="@id/characterFragment"
@@ -20,18 +20,13 @@
     </fragment>
 
     <fragment
-        android:id="@+id/fragmentSearch"
-        android:name="io.sandbox.unsplash.app.main.blank.BlankFragment"
-        android:label="BlankFragment" />
-
-    <fragment
-        android:id="@+id/fragmentUser"
-        android:name="io.sandbox.unsplash.app.main.blank.BlankFragment"
+        android:id="@+id/fragmentMultitouch"
+        android:name="io.sandbox.unsplash.app.main.multitouch.MultitouchFragment"
         android:label="BlankFragment" />
 
     <fragment
         android:id="@+id/characterFragment"
-        android:name="io.sandbox.unsplash.app.main.home.character.CharacterFragment"
+        android:name="io.sandbox.unsplash.app.main.characters.character.CharacterFragment"
         android:label="CharacterFragment"
         tools:layout="@layout/fragment_character">
         <argument

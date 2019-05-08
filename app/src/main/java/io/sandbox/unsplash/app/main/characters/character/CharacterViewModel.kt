@@ -1,4 +1,4 @@
-package io.sandbox.unsplash.app.main.home.character
+package io.sandbox.unsplash.app.main.characters.character
 
 import io.sandbox.unsplash.app.base.BaseViewModel
 import io.sandbox.unsplash.app.base.JobDispatcher

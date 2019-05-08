@@ -2,8 +2,8 @@ package io.sandbox.unsplash.di.module
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import io.sandbox.unsplash.app.main.home.HomeFragment
-import io.sandbox.unsplash.app.main.home.character.CharacterFragment
+import io.sandbox.unsplash.app.main.characters.CharacterListFragment
+import io.sandbox.unsplash.app.main.characters.character.CharacterFragment
 import io.sandbox.unsplash.di.FragmentScoped
 
 @Module
@@ -11,7 +11,7 @@ abstract class FragmentModule {
 
     @FragmentScoped
     @ContributesAndroidInjector
-    abstract fun homeFragment(): HomeFragment
+    abstract fun homeFragment(): CharacterListFragment
 
     @FragmentScoped
     @ContributesAndroidInjector

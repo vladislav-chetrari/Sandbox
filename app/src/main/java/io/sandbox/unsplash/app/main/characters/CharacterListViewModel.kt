@@ -1,4 +1,4 @@
-package io.sandbox.unsplash.app.main.home
+package io.sandbox.unsplash.app.main.characters
 
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
@@ -8,7 +8,7 @@ import io.sandbox.unsplash.app.base.JobDispatcher
 import io.sandbox.unsplash.app.datasource.factory.CharacterDataSourceFactory
 import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(
+class CharacterListViewModel @Inject constructor(
     dispatcher: JobDispatcher,
     private val factory: CharacterDataSourceFactory
 ) : BaseViewModel(dispatcher) {

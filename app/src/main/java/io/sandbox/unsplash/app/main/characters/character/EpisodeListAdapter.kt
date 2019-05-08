@@ -1,4 +1,4 @@
-package io.sandbox.unsplash.app.main.home.character
+package io.sandbox.unsplash.app.main.characters.character
 
 import android.text.util.Linkify.WEB_URLS
 import android.text.util.Linkify.addLinks

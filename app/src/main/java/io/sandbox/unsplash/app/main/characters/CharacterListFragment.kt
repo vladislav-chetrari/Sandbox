@@ -1,17 +1,17 @@
-package io.sandbox.unsplash.app.main.home
+package io.sandbox.unsplash.app.main.characters
 
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import io.sandbox.unsplash.R
 import io.sandbox.unsplash.app.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_character_list.*
 
-class HomeFragment : BaseFragment() {
+class CharacterListFragment : BaseFragment() {
 
-    private val viewModel by lazy { fromActivity<HomeViewModel>(factory) }
-    private val listAdapter = HomeListAdapter()
-    override val layoutResId = R.layout.fragment_home
+    private val viewModel by lazy { fromActivity<CharacterListViewModel>(factory) }
+    private val listAdapter = CharacterListAdapter()
+    override val layoutResId = R.layout.fragment_character_list
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

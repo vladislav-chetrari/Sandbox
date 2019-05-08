@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">UnSplash</string>
 
-    <string name="main_page_home">Home</string>
-    <string name="main_page_search">Search</string>
-    <string name="main_page_user">User</string>
+    <string name="main_page_pagination">Pagination</string>
+    <string name="main_page_multitouch">Multitouch</string>
 
     <string name="home_list_item_status">Status: %s</string>
 

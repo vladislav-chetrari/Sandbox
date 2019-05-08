@@ -1,4 +1,4 @@
-package io.sandbox.unsplash.app.main.home
+package io.sandbox.unsplash.app.main.characters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +16,7 @@ import io.sandbox.unsplash.data.model.CharacterStatus
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.list_item_character.*
 
-class HomeListAdapter : PagedListAdapter<Character, HomeListAdapter.ViewHolder>(DiffCallback()) {
+class CharacterListAdapter : PagedListAdapter<Character, CharacterListAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_character, parent, false))
@@ -33,7 +33,7 @@ class HomeListAdapter : PagedListAdapter<Character, HomeListAdapter.ViewHolder>(
             status.setStatus(item.status)
 
             containerView.setOnClickListener {
-                val direction = HomeFragmentDirections.actionMainNavHomeToCharacterFragment(item.id)
+                val direction = CharacterListFragmentDirections.actionMainNavHomeToCharacterFragment(item.id)
                 it.findNavController().navigate(direction)
             }
         }

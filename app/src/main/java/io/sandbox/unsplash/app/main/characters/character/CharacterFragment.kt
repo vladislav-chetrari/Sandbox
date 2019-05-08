@@ -1,4 +1,4 @@
-package io.sandbox.unsplash.app.main.home.character
+package io.sandbox.unsplash.app.main.characters.character
 
 import android.graphics.Color.WHITE
 import android.os.Bundle
