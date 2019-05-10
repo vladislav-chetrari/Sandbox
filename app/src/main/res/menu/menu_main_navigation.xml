@@ -11,4 +11,9 @@
         android:icon="@drawable/ic_touch_app_black_24dp"
         android:title="@string/main_page_multitouch" />
 
+    <item
+        android:id="@+id/fragmentArrayItem"
+        android:icon="@drawable/ic_array_black_24dp"
+        android:title="@string/main_page_array" />
+
 </menu>

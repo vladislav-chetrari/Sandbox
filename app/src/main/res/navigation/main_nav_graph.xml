@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_character_list">
         <action
             android:id="@+id/action_main_nav_home_to_characterFragment"
-            app:destination="@id/characterFragment"
+            app:destination="@id/fragmentCharacter"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -22,16 +22,34 @@
     <fragment
         android:id="@+id/fragmentMultitouch"
         android:name="io.sandbox.app.main.multitouch.MultitouchFragment"
-        android:label="BlankFragment" />
+        android:label="BlankFragment"
+        tools:layout="@layout/fragment_multitouch" />
 
     <fragment
-        android:id="@+id/characterFragment"
+        android:id="@+id/fragmentCharacter"
         android:name="io.sandbox.app.main.characters.character.CharacterFragment"
         android:label="CharacterFragment"
         tools:layout="@layout/fragment_character">
         <argument
             android:name="characterId"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentArrayItem"
+        android:name="io.sandbox.app.main.graph.ArrayItemFragment"
+        android:label="ArrayItemFragment"
+        tools:layout="@layout/fragment_array_item">
+        <argument
+            android:name="orderNo"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_fragmentArrayItem_self"
+            app:destination="@id/fragmentArrayItem"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
 </navigation>

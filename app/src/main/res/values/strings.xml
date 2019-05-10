@@ -3,6 +3,7 @@
 
     <string name="main_page_pagination">Pagination</string>
     <string name="main_page_multitouch">Multitouch</string>
+    <string name="main_page_array">Array</string>
 
     <string name="home_list_item_status">Status: %s</string>
 
@@ -16,4 +17,6 @@
     <string name="character_gender_label">Gender</string>
     <string name="character_location_label">Location</string>
     <string name="character_episodes_label">Episodes</string>
+
+    <string name="array_item_next_label">Next</string>
 </resources>

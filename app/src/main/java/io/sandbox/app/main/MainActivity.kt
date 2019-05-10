@@ -3,7 +3,7 @@ package io.sandbox.app.main
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import io.sandbox.R
 import io.sandbox.app.base.BaseActivity
@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
-    private val navigationController: NavController by lazy { Navigation.findNavController(this, R.id.navigationHostFragment) }
+    private val navigationController: NavController by lazy { findNavController(this, R.id.navigationHostFragment) }
 
     override val layoutResId = R.layout.activity_main
 

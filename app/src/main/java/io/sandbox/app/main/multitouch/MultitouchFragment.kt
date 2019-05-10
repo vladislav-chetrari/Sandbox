@@ -1,14 +1,9 @@
 package io.sandbox.app.main.multitouch
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import io.sandbox.app.widget.MultitouchView
+import io.sandbox.R
+import io.sandbox.app.base.BaseFragment
 
-class MultitouchFragment : Fragment() {
+class MultitouchFragment : BaseFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        MultitouchView(context!!)
+    override val layoutResId = R.layout.fragment_multitouch
 }
