@@ -1,4 +1,4 @@
-package io.sandbox.app.main.multitouch
+package io.sandbox.app.widget
 
 import android.annotation.SuppressLint
 import android.content.Context
