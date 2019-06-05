@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@id/start"
+        app:duration="1000"
+        app:motionInterpolator="linear">
+        <OnSwipe
+            app:dragDirection="dragDown"
+            app:touchAnchorSide="bottom" />
+        <KeyFrameSet>
+            <KeyPosition
+                app:keyPositionType="pathRelative"
+                app:motionTarget="@id/sun"
+                app:percentX="-0.3" />
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@id/backgroundView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <CustomAttribute
+                app:attributeName="backgroundColor"
+                app:customColorValue="@color/black" />
+        </Constraint>
+        <Constraint
+            android:id="@id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <CustomAttribute
+                app:attributeName="text"
+                app:customStringValue="When world's so cold and dark" />
+            <CustomAttribute
+                app:attributeName="textColor"
+                app:customColorValue="@android:color/white" />
+        </Constraint>
+        <Constraint
+            android:id="@id/sun"
+            android:layout_width="@dimen/common_16dp"
+            android:layout_height="@dimen/common_16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@id/backgroundView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <CustomAttribute
+                app:attributeName="backgroundColor"
+                app:customColorValue="@color/yellowLight" />
+        </Constraint>
+        <Constraint
+            android:id="@id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/common_16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+            <CustomAttribute
+                app:attributeName="text"
+                app:customStringValue="Her smile brings the light" />
+            <CustomAttribute
+                app:attributeName="textColor"
+                app:customColorValue="@color/amberDark" />
+        </Constraint>
+        <Constraint
+            android:id="@id/sun"
+            android:layout_width="@dimen/common_80dp"
+            android:layout_height="@dimen/common_80dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </ConstraintSet>
+
+</MotionScene>

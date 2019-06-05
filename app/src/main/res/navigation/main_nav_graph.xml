@@ -51,5 +51,12 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentSprings"
+        android:name="io.sandbox.app.main.springs.SpringsFragment" />
+    <fragment
+        android:id="@+id/fragmentMotion"
+        android:name="io.sandbox.app.main.motion.MotionFragment"
+        android:label="MotionFragment" />
 
 </navigation>
