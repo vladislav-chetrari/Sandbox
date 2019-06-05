@@ -53,10 +53,12 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentSprings"
-        android:name="io.sandbox.app.main.springs.SpringsFragment" />
+        android:name="io.sandbox.app.main.springs.SpringsFragment"
+        tools:layout="@layout/fragment_springs" />
     <fragment
         android:id="@+id/fragmentMotion"
         android:name="io.sandbox.app.main.motion.MotionFragment"
-        android:label="MotionFragment" />
+        android:label="MotionFragment"
+        tools:layout="@layout/fragment_motion" />
 
 </navigation>
