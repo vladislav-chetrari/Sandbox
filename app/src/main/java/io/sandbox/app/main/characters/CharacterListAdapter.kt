@@ -16,7 +16,7 @@ import io.sandbox.data.model.CharacterStatus
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.list_item_character.*
 
-class CharacterListAdapter : PagedListAdapter<Character, CharacterListAdapter.ViewHolder>(DiffCallback()) {
+class CharacterListAdapter : PagedListAdapter<Character?, CharacterListAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_character, parent, false))
@@ -45,7 +45,7 @@ class CharacterListAdapter : PagedListAdapter<Character, CharacterListAdapter.Vi
         }
     }
 
-    private class DiffCallback : DiffUtil.ItemCallback<Character>() {
+    private class DiffCallback : DiffUtil.ItemCallback<Character?>() {
         override fun areItemsTheSame(oldItem: Character, newItem: Character) = oldItem.id == newItem.id
         override fun areContentsTheSame(oldItem: Character, newItem: Character) = oldItem == newItem
     }
