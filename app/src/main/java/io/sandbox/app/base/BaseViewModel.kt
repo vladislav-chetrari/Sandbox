@@ -24,8 +24,8 @@ abstract class BaseViewModel(private val dispatcher: JobDispatcher = JobDispatch
         return liveData
     }
 
-    protected val <T> LiveData<T>.mutable: MutableLiveData<T>?
-        get() = if (this is MutableLiveData) this else null
+    protected val <T> LiveData<T>.mutable: MutableLiveData<T>
+        get() = this as MutableLiveData<T>
 
     protected fun <T> launchOnIO(
         onError: (Throwable) -> Unit = this@BaseViewModel::onError,

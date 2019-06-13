@@ -11,10 +11,10 @@ import androidx.annotation.FloatRange
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import io.sandbox.R
-import io.sandbox.app.base.BaseFragment
+import io.sandbox.app.main.MainFragment
 import kotlinx.android.synthetic.main.fragment_springs.*
 
-class SpringsFragment : BaseFragment() {
+class SpringsFragment : MainFragment() {
 
     override val layoutResId = R.layout.fragment_springs
 

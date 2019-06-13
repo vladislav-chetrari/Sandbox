@@ -7,32 +7,24 @@ import android.graphics.Color.RED
 import android.graphics.Color.WHITE
 import android.graphics.Color.YELLOW
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.FrameLayout
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import io.sandbox.R
-import io.sandbox.app.base.BaseActivity
-import io.sandbox.app.base.BaseFragment
+import io.sandbox.app.main.MainFragment
+import kotlinx.android.synthetic.main.app_bar_layout.*
 import kotlinx.android.synthetic.main.fragment_array_item.*
 
-class ArrayItemFragment : BaseFragment() {
+class ArrayItemFragment : MainFragment() {
 
     private val args by navArgs<ArrayItemFragmentArgs>()
 
     override val layoutResId = R.layout.fragment_array_item
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        super.onCreateView(inflater, container, savedInstanceState).apply {
-            (activity as? BaseActivity)?.setSupportActionBar(toolbar)
-        }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        (view as? FrameLayout)?.setBackgroundColor(bgColors[args.orderNo % bgColors.size])
         toolbar.title = args.orderNo.toString()
+        super.onViewCreated(view, savedInstanceState)
+        frameLayout.setBackgroundColor(bgColors[args.orderNo % bgColors.size])
         next.setOnClickListener {
             val destination = ArrayItemFragmentDirections.actionFragmentArrayItemSelf(args.orderNo.inc())
             view.findNavController().navigate(destination)

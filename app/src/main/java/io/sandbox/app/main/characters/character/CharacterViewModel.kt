@@ -15,6 +15,6 @@ class CharacterViewModel @Inject constructor(
 
     fun onCharacterIdReceived(characterId: String) = launchOnIO {
         val char = client.character(characterId)
-        character.mutable?.postValue(char)
+        character.mutable.postValue(char)
     }
 }

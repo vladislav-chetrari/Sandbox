@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/fragmentList"
         android:name="io.sandbox.app.main.characters.CharacterListFragment"
-        android:label="HomeFragment"
+        android:label="@string/main_page_pagination"
         tools:layout="@layout/fragment_character_list">
         <action
             android:id="@+id/action_main_nav_home_to_characterFragment"
@@ -22,13 +22,12 @@
     <fragment
         android:id="@+id/fragmentMultitouch"
         android:name="io.sandbox.app.main.multitouch.MultitouchFragment"
-        android:label="BlankFragment"
+        android:label="@string/main_page_multitouch"
         tools:layout="@layout/fragment_multitouch" />
 
     <fragment
         android:id="@+id/fragmentCharacter"
         android:name="io.sandbox.app.main.characters.character.CharacterFragment"
-        android:label="CharacterFragment"
         tools:layout="@layout/fragment_character">
         <argument
             android:name="characterId"
@@ -37,7 +36,6 @@
     <fragment
         android:id="@+id/fragmentArrayItem"
         android:name="io.sandbox.app.main.graph.ArrayItemFragment"
-        android:label="ArrayItemFragment"
         tools:layout="@layout/fragment_array_item">
         <argument
             android:name="orderNo"
@@ -54,11 +52,12 @@
     <fragment
         android:id="@+id/fragmentSprings"
         android:name="io.sandbox.app.main.springs.SpringsFragment"
+        android:label="@string/main_page_springs"
         tools:layout="@layout/fragment_springs" />
     <fragment
         android:id="@+id/fragmentMotion"
         android:name="io.sandbox.app.main.motion.MotionFragment"
-        android:label="MotionFragment"
+        android:label="@string/main_page_motion"
         tools:layout="@layout/fragment_motion" />
 
 </navigation>

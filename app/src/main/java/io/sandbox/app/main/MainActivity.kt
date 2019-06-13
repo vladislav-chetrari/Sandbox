@@ -2,6 +2,9 @@ package io.sandbox.app.main
 
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -22,7 +25,15 @@ class MainActivity : BaseActivity() {
 
     override fun setSupportActionBar(toolbar: Toolbar?) {
         super.setSupportActionBar(toolbar)
-        toolbar?.setupWithNavController(navigationController)
+        toolbar ?: return
+        val setupToolbarWithNavController = { toolbar.setupWithNavController(navigationController) }
+        if (lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)) setupToolbarWithNavController()
+        else lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onResume(owner: LifecycleOwner) {
+                setupToolbarWithNavController()
+                owner.lifecycle.removeObserver(this)
+            }
+        })
     }
 
     override fun onSupportNavigateUp(): Boolean = navigationController.navigateUp()

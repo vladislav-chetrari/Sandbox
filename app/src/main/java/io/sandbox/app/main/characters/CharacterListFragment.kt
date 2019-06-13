@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import io.sandbox.R
-import io.sandbox.app.base.BaseFragment
+import io.sandbox.app.main.MainFragment
 import kotlinx.android.synthetic.main.fragment_character_list.*
 
-class CharacterListFragment : BaseFragment() {
+class CharacterListFragment : MainFragment() {
 
     private val viewModel by lazy { fromActivity<CharacterListViewModel>(factory) }
     private val listAdapter = CharacterListAdapter()

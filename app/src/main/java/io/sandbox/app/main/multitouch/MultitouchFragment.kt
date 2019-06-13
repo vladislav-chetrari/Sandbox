@@ -1,9 +1,9 @@
 package io.sandbox.app.main.multitouch
 
 import io.sandbox.R
-import io.sandbox.app.base.BaseFragment
+import io.sandbox.app.main.MainFragment
 
-class MultitouchFragment : BaseFragment() {
+class MultitouchFragment : MainFragment() {
 
     override val layoutResId = R.layout.fragment_multitouch
 }
