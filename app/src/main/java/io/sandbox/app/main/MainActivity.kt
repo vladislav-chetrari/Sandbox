@@ -10,13 +10,12 @@ import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import io.sandbox.R
 import io.sandbox.app.base.BaseActivity
+import io.sandbox.app.base.lazily
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(R.layout.activity_main) {
 
-    private val navigationController: NavController by lazy { findNavController(this, R.id.navigationHostFragment) }
-
-    override val layoutResId = R.layout.activity_main
+    private val navigationController: NavController by lazily { findNavController(this, R.id.navigationHostFragment) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

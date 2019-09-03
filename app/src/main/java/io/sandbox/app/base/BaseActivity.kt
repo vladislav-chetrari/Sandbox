@@ -1,29 +1,34 @@
 package io.sandbox.app.base
 
 import android.os.Bundle
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
+import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.*
 import dagger.android.AndroidInjection
-import dagger.android.support.DaggerAppCompatActivity
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
-abstract class BaseActivity : DaggerAppCompatActivity(), LayoutOwner {
+abstract class BaseActivity(
+        @LayoutRes private val contentResId: Int
+) : AppCompatActivity(contentResId), HasSupportFragmentInjector {
 
+    @Inject
+    internal lateinit var injector: DispatchingAndroidInjector<Fragment>
     @Inject
     lateinit var factory: ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        layoutResId?.let(::setContentView)
     }
 
-    protected inline fun <reified VM : ViewModel> FragmentActivity.from(provider: ViewModelProvider.Factory) =
-            ViewModelProviders.of(this, provider).get(VM::class.java)
+    override fun supportFragmentInjector() = injector
+
+    protected inline fun <reified VM : ViewModel> provide() = lazily {
+        ViewModelProviders.of(this, factory).get(VM::class.java)
+    }
 
     protected fun <T> LiveData<T>.safeObserve(callback: (T) -> Unit) =
             observe(this@BaseActivity, Observer<T> { it?.run(callback) })

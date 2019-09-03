@@ -13,16 +13,14 @@ import io.sandbox.app.base.BaseFragment
 import io.sandbox.app.extension.load
 import kotlinx.android.synthetic.main.fragment_character.*
 
-class CharacterFragment : BaseFragment() {
+class CharacterFragment : BaseFragment(R.layout.fragment_character) {
 
     private val args by navArgs<CharacterFragmentArgs>()
-    private val viewModel by lazy { fromFragment<CharacterViewModel>(factory) }
+    private val viewModel by provide<CharacterViewModel>()
     private val adapter = EpisodeListAdapter()
 
-    override val layoutResId: Int? = R.layout.fragment_character
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         viewModel.onCharacterIdReceived(args.characterId)
         viewModel.character.safeObserve { character ->
             collapsingToolbar.title = character.name

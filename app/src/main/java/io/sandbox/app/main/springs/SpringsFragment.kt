@@ -2,9 +2,7 @@ package io.sandbox.app.main.springs
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.MotionEvent.ACTION_DOWN
-import android.view.MotionEvent.ACTION_MOVE
-import android.view.MotionEvent.ACTION_UP
+import android.view.MotionEvent.*
 import android.view.View
 import android.view.ViewTreeObserver
 import androidx.annotation.FloatRange
@@ -14,9 +12,7 @@ import io.sandbox.R
 import io.sandbox.app.main.MainFragment
 import kotlinx.android.synthetic.main.fragment_springs.*
 
-class SpringsFragment : MainFragment() {
-
-    override val layoutResId = R.layout.fragment_springs
+class SpringsFragment : MainFragment(R.layout.fragment_springs) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,8 +20,8 @@ class SpringsFragment : MainFragment() {
     }
 
     private fun View.springPosition(
-        @FloatRange(from = .0) stiffness: Float,
-        @FloatRange(from = .0) dampingRatio: Float
+            @FloatRange(from = .0) stiffness: Float,
+            @FloatRange(from = .0) dampingRatio: Float
     ) = viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
 
         @SuppressLint("Range")
@@ -36,9 +32,9 @@ class SpringsFragment : MainFragment() {
 
         override fun onGlobalLayout() {
             val xAnimation = SpringAnimation(this@springPosition, SpringAnimation.X)
-                .apply { spring = springForceInstance(x) }
+                    .apply { spring = springForceInstance(x) }
             val yAnimation = SpringAnimation(this@springPosition, SpringAnimation.Y)
-                .apply { spring = springForceInstance(y) }
+                    .apply { spring = springForceInstance(y) }
             var dX = 0f
             var dY = 0f
             setOnTouchListener { view, event ->

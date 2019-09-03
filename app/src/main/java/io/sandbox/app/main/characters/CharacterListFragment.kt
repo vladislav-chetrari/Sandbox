@@ -7,14 +7,13 @@ import io.sandbox.R
 import io.sandbox.app.main.MainFragment
 import kotlinx.android.synthetic.main.fragment_character_list.*
 
-class CharacterListFragment : MainFragment() {
+class CharacterListFragment : MainFragment(R.layout.fragment_character_list) {
 
-    private val viewModel by lazy { fromActivity<CharacterListViewModel>(factory) }
+    private val viewModel by provide<CharacterListViewModel>()
     private val listAdapter = CharacterListAdapter()
-    override val layoutResId = R.layout.fragment_character_list
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         viewModel.characters.safeObserve(listAdapter::submitList)
         viewModel.progress.safeObserve { progressBar.isVisible = it }
     }

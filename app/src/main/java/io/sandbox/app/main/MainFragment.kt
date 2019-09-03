@@ -6,7 +6,7 @@ import io.sandbox.R
 import io.sandbox.app.base.BaseActivity
 import io.sandbox.app.base.BaseFragment
 
-abstract class MainFragment : BaseFragment() {
+abstract class MainFragment(contentLayoutId: Int) : BaseFragment(contentLayoutId) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -1,8 +1,7 @@
 buildscript {
     ext {
-        kt = '1.3.21'
+        kt = '1.3.50'
         ktCoroutines = '1.1.1'
-        ktx = '1.0.1'
         dagger = '2.21'
         lifecycle = '2.0.0'
         viewModelKtx = '2.0.0'
@@ -15,7 +14,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.android.tools.build:gradle:3.5.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kt"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation"
     }
