@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.navigation.findNavController
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -16,29 +15,31 @@ import io.sandbox.data.model.CharacterStatus
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.list_item_character.*
 
-class CharacterListAdapter : PagedListAdapter<Character?, CharacterListAdapter.ViewHolder>(DiffCallback()) {
+class CharacterListAdapter(
+        private val onItemSelected: (Character) -> Unit
+) : PagedListAdapter<Character?, CharacterListAdapter.ViewHolder>(DiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_character, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.list_item_character, parent, false), onItemSelected)
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position) ?: Character())
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position))
 
-    class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    class ViewHolder(
+            override val containerView: View,
+            private val onItemSelected: (Character) -> Unit
+    ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-        fun bind(item: Character) {
-            image.load(item.image)
-            name.text = item.name
-            location.text = item.location.name
-            species.text = item.species
-            status.setStatus(item.status)
-
-            containerView.setOnClickListener {
-                val direction = CharacterListFragmentDirections.actionMainNavHomeToCharacterFragment(item.id)
-                it.findNavController().navigate(direction)
-            }
+        fun bind(item: Character?) {
+            containerView.setOnClickListener { item?.let(onItemSelected) }
+            image.load(item?.image)
+            name.text = item?.name
+            location.text = item?.location?.name
+            species.text = item?.species
+            status.setStatus(item?.status)
         }
 
-        private fun TextView.setStatus(status: CharacterStatus) {
+        private fun TextView.setStatus(status: CharacterStatus?) {
+            if (status == null) return
             val res = containerView.resources
             text = res.getString(R.string.home_list_item_status, res.getString(status.stringResId))
             setTextColor(ContextCompat.getColor(context, status.colorResId))

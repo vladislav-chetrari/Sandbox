@@ -30,17 +30,13 @@
         android:name="io.sandbox.app.main.characters.character.CharacterFragment"
         tools:layout="@layout/fragment_character">
         <argument
-            android:name="characterId"
-            app:argType="string" />
+            android:name="character"
+            app:argType="io.sandbox.data.model.Character" />
     </fragment>
     <fragment
         android:id="@+id/fragmentArrayItem"
         android:name="io.sandbox.app.main.graph.ArrayItemFragment"
         tools:layout="@layout/fragment_array_item">
-        <argument
-            android:name="orderNo"
-            android:defaultValue="0"
-            app:argType="integer" />
         <action
             android:id="@+id/action_fragmentArrayItem_self"
             app:destination="@id/fragmentArrayItem"
@@ -48,6 +44,10 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="orderNo"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/fragmentSprings"

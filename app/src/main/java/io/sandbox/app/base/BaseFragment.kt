@@ -45,9 +45,9 @@ abstract class BaseFragment(
         ViewModelProviders.of(requireActivity(), factory).get(VM::class.java)
     }
 
-    protected fun <T> LiveData<T>.safeObserve(callback: (T) -> Unit) =
-            observe(viewLifecycleOwner, Observer<T> { it?.run(callback) })
+    protected fun <T> LiveData<T>.observe(consumer: (T) -> Unit) =
+            observe(viewLifecycleOwner, Observer { consumer(it) })
 
-    protected fun <T> LiveData<T>.observe(callback: (T?) -> Unit) =
-            observe(viewLifecycleOwner, Observer<T> { callback(it) })
+    protected fun <T> LiveData<T?>.safeObserve(consumer: (T) -> Unit) =
+            observe(viewLifecycleOwner, Observer { it?.let(consumer) })
 }
