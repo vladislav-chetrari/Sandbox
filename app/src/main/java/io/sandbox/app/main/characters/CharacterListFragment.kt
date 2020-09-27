@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_character_list.*
 
 class CharacterListFragment : MainFragment(R.layout.fragment_character_list) {
 
-    private val viewModel by provide<CharactersViewModel>()
+    private val viewModel by viewModels<CharactersViewModel>()
     private val listAdapter by lazily { CharacterListAdapter(viewModel::onCharacterSelected) }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

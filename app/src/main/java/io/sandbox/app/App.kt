@@ -1,17 +1,23 @@
 package io.sandbox.app
 
-import dagger.android.AndroidInjector
-import dagger.android.support.DaggerApplication
+import android.app.Application
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
 import io.sandbox.di.DaggerAppComponent
 import timber.log.Timber
 import timber.log.Timber.DebugTree
+import javax.inject.Inject
 
-class App : DaggerApplication() {
+class App : Application(), HasAndroidInjector {
+
+    @Inject
+    lateinit var injector: DispatchingAndroidInjector<Any>
 
     override fun onCreate() {
         super.onCreate()
         Timber.plant(DebugTree())
+        DaggerAppComponent.builder().application(this).build().inject(this)
     }
 
-    override fun applicationInjector(): AndroidInjector<App> = DaggerAppComponent.builder().create(this)
+    override fun androidInjector() = injector
 }
