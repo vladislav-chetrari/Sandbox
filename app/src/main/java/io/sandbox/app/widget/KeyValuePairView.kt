@@ -3,8 +3,8 @@ package io.sandbox.app.widget
 import android.content.Context
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import io.sandbox.R
 import io.sandbox.app.extension.watch
@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.key_value_pair_view.view.*
 
 class KeyValuePairView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : CardView(context, attrs, defStyleAttr) {
+) : LinearLayout(context, attrs, defStyleAttr) {
 
     init {
         inflate(getContext(), R.layout.key_value_pair_view, this)

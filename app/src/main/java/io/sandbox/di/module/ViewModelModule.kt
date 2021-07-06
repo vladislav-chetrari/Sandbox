@@ -6,7 +6,8 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import io.sandbox.app.base.ViewModelFactory
-import io.sandbox.app.main.characters.CharactersViewModel
+import io.sandbox.app.main.characters.CharacterListViewModel
+import io.sandbox.app.main.characters.character.CharacterDetailsViewModel
 import io.sandbox.di.ViewModelKey
 
 @Module
@@ -17,6 +18,11 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(CharactersViewModel::class)
-    internal abstract fun homeViewModel(viewModel: CharactersViewModel): ViewModel
+    @ViewModelKey(CharacterListViewModel::class)
+    internal abstract fun characterListViewModel(viewModel: CharacterListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CharacterDetailsViewModel::class)
+    internal abstract fun characterDetailsViewModel(viewModel: CharacterDetailsViewModel): ViewModel
 }

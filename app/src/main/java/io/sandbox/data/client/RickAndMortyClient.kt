@@ -4,6 +4,6 @@ import io.sandbox.data.model.Character
 import io.sandbox.data.model.CharactersResponse
 
 interface RickAndMortyClient {
-    fun characters(page: Int): CharactersResponse
-    fun character(id: String): Character
+    suspend fun characters(page: Int): CharactersResponse
+    suspend fun character(id: String): Character
 }

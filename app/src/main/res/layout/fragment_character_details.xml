@@ -74,26 +74,25 @@
                 android:layout_height="wrap_content"
                 app:keyText="@string/character_location_label" />
 
-            <androidx.cardview.widget.CardView
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_1dp"
+                android:background="@color/divider" />
+
+            <io.sandbox.app.widget.CollapsingContainer
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardUseCompatPadding="true">
+                android:padding="@dimen/common_8dp"
+                app:headerText="@string/character_episodes_label">
 
-                <io.sandbox.app.widget.CollapsingContainer
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/episodesList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/common_8dp"
-                    app:headerText="@string/character_episodes_label">
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/episodesList"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-                </io.sandbox.app.widget.CollapsingContainer>
-
-            </androidx.cardview.widget.CardView>
+            </io.sandbox.app.widget.CollapsingContainer>
 
         </LinearLayout>
 

@@ -12,11 +12,12 @@ import io.sandbox.app.base.BaseActivity
 import io.sandbox.app.base.BaseFragment
 import io.sandbox.app.extension.load
 import io.sandbox.data.model.Character
-import kotlinx.android.synthetic.main.fragment_character.*
+import kotlinx.android.synthetic.main.fragment_character_details.*
 
-class CharacterFragment : BaseFragment(R.layout.fragment_character) {
+class CharacterDetailsFragment : BaseFragment(R.layout.fragment_character_details) {
 
-    private val args by navArgs<CharacterFragmentArgs>()
+    private val args by navArgs<CharacterDetailsFragmentArgs>()
+    private val viewModel by viewModels<CharacterDetailsViewModel>()
     private val adapter = EpisodeListAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,7 +27,14 @@ class CharacterFragment : BaseFragment(R.layout.fragment_character) {
         collapsingToolbar.setExpandedTitleColor(WHITE)
         collapsingToolbar.setCollapsedTitleTextColor(WHITE)
         episodesList.adapter = adapter
-        showCharacter(args.character)
+        viewModel.onCharacterIdReceived(args.characterId)
+    }
+
+    override fun observeLiveData() = viewModel.character.observe(::showCharacter)
+
+    override fun onDestroyView() {
+        episodesList.adapter = null
+        super.onDestroyView()
     }
 
     private fun showCharacter(character: Character) {

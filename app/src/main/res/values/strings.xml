@@ -21,4 +21,7 @@
 
     <string name="array_item_next_label">Next</string>
     <string name="main_page_motion">Motion</string>
+    <string name="retry">Retry</string>
+
+    <string name="error_generic">Error occurred</string>
 </resources>

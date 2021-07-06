@@ -27,11 +27,11 @@
 
     <fragment
         android:id="@+id/fragmentCharacter"
-        android:name="io.sandbox.app.main.characters.character.CharacterFragment"
-        tools:layout="@layout/fragment_character">
+        android:name="io.sandbox.app.main.characters.character.CharacterDetailsFragment"
+        tools:layout="@layout/fragment_character_details">
         <argument
-            android:name="character"
-            app:argType="io.sandbox.data.model.Character" />
+            android:name="characterId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragmentArrayItem"

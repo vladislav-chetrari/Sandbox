@@ -1,6 +1,8 @@
 package io.sandbox.app.base
 
 import android.content.Context
+import android.os.Bundle
+import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -9,6 +11,7 @@ import androidx.lifecycle.*
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 abstract class BaseFragment(
@@ -26,7 +29,21 @@ abstract class BaseFragment(
         super.onAttach(context)
     }
 
-    override fun androidInjector() = injector
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeLiveData()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                observeStateFlows()
+            }
+        }
+    }
+
+    protected open fun observeLiveData() = Unit
+
+    protected open suspend fun observeStateFlows() = Unit
+
+    final override fun androidInjector() = injector
 
     /*
     * provided ViewModel depends on fragment lifecycle!
@@ -48,8 +65,8 @@ abstract class BaseFragment(
         activityViewModels<VM> { factory }
 
     protected fun <T> LiveData<T>.observe(consumer: (T) -> Unit) =
-            observe(viewLifecycleOwner, Observer { consumer(it) })
+        observe(viewLifecycleOwner, Observer { consumer(it) })
 
     protected fun <T> LiveData<T?>.safeObserve(consumer: (T) -> Unit) =
-            observe(viewLifecycleOwner, Observer { it?.let(consumer) })
+        observe(viewLifecycleOwner, Observer { it?.let(consumer) })
 }

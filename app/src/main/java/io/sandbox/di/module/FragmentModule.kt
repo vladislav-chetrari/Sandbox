@@ -3,7 +3,7 @@ package io.sandbox.di.module
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import io.sandbox.app.main.characters.CharacterListFragment
-import io.sandbox.app.main.characters.character.CharacterFragment
+import io.sandbox.app.main.characters.character.CharacterDetailsFragment
 import io.sandbox.app.main.graph.ArrayItemFragment
 import io.sandbox.app.main.motion.MotionFragment
 import io.sandbox.app.main.multitouch.MultitouchFragment
@@ -19,7 +19,7 @@ abstract class FragmentModule {
 
     @FragmentScoped
     @ContributesAndroidInjector
-    abstract fun titleFragment(): CharacterFragment
+    abstract fun titleFragment(): CharacterDetailsFragment
 
     @FragmentScoped
     @ContributesAndroidInjector

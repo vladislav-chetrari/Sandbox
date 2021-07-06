@@ -6,9 +6,14 @@ import androidx.lifecycle.*
 val <T> LiveData<T>.mutable: MutableLiveData<T>
     get() = this as MutableLiveData<T>
 
-fun <T> liveData(): LiveData<T> = MutableLiveData<T>()
+val <T> LiveData<T>.mediator: MediatorLiveData<T>
+    get() = this as MediatorLiveData<T>
 
-fun <T> liveData(initialValue: T): LiveData<T> = MutableLiveData<T>(initialValue)
+fun <T> mutableLiveData(): LiveData<T> = MutableLiveData()
+
+fun <T> mutableLiveData(initialValue: T): LiveData<T> = MutableLiveData(initialValue)
+
+fun <T> mediatorLiveData(): LiveData<T> = MediatorLiveData()
 
 fun <T> actionLiveData(): LiveData<T> = object : MutableLiveData<T>() {
 

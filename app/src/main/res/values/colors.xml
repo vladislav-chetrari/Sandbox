@@ -8,4 +8,5 @@
     <color name="yellowLight">#fffde7</color>
     <color name="amber">#ffab00</color>
     <color name="amberDark">#ff6f00</color>
+    <color name="divider">#8000574B</color>
 </resources>

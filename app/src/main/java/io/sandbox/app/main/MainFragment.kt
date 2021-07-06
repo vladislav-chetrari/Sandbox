@@ -10,6 +10,6 @@ abstract class MainFragment(contentLayoutId: Int) : BaseFragment(contentLayoutId
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as BaseActivity).setSupportActionBar(view.findViewById(R.id.toolbar))
+        (requireActivity() as BaseActivity).setSupportActionBar(view.findViewById(R.id.toolbar))
     }
 }
