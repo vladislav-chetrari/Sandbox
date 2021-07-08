@@ -11,7 +11,7 @@
         android:label="@string/main_page_pagination"
         tools:layout="@layout/fragment_character_list">
         <action
-            android:id="@+id/action_main_nav_home_to_characterFragment"
+            android:id="@+id/navigateToCharacterDetails"
             app:destination="@id/fragmentCharacter"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"

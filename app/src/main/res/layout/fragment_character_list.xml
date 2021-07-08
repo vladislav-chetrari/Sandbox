@@ -12,19 +12,7 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:layout_scrollFlags="scroll|enterAlways" />
-
-        </com.google.android.material.appbar.AppBarLayout>
+        <include layout="@layout/app_bar_layout" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/refreshLayout"
@@ -43,6 +31,119 @@
                 tools:listitem="@layout/list_item_character" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/searchCriteriaOpen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/common_16dp"
+            android:src="@drawable/ic_search_24"
+            tools:ignore="ContentDescription"
+            tools:visibility="gone" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/searchCriteria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:visibility="gone"
+            app:cardCornerRadius="@dimen/common_16dp"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="@dimen/common_16dp"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/character_name_label"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/searchCriteriaName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/character_status_label">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/searchCriteriaStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            tools:ignore="LabelFor" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/clearSearchCriteriaStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/common_8dp"
+                        android:src="@drawable/ic_clear_24"
+                        android:visibility="gone"
+                        tools:ignore="ContentDescription"
+                        tools:visibility="visible" />
+
+                </LinearLayout>
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/common_8dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/searchReset"
+                        style="@style/Widget.MaterialComponents.Chip.Action"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reset"
+                        app:chipIcon="@drawable/ic_clear_24" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/searchCancel"
+                        style="@style/Widget.MaterialComponents.Chip.Action"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cancel"
+                        app:chipIcon="@drawable/ic_cancel_24" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/searchConfirm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/done"
+                        android:textColor="@android:color/white"
+                        app:chipBackgroundColor="@color/colorPrimary"
+                        app:chipIcon="@drawable/ic_done_24"
+                        app:chipIconTint="@android:color/white" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

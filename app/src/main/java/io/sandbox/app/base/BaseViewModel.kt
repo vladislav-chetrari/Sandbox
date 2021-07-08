@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
 
 
 abstract class BaseViewModel : ViewModel() {
@@ -14,7 +16,7 @@ abstract class BaseViewModel : ViewModel() {
         error?.let { Timber.e(it) }
     }
 
-    protected fun launch(work: suspend () -> Unit) {
-        viewModelScope.launch { work() }
+    protected fun launch(context: CoroutineContext = EmptyCoroutineContext, work: suspend () -> Unit) {
+        viewModelScope.launch(context) { work() }
     }
 }

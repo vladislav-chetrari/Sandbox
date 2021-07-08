@@ -12,6 +12,7 @@
     <string name="character_status_dead">Dead</string>
     <string name="character_status_unknown">Unknown</string>
 
+    <string name="character_name_label">Name</string>
     <string name="character_status_label">Status</string>
     <string name="character_species_label">Species</string>
     <string name="character_type_label">Type</string>
@@ -24,4 +25,8 @@
     <string name="retry">Retry</string>
 
     <string name="error_generic">Error occurred</string>
+    <string name="name_label">Name</string>
+    <string name="cancel">Cancel</string>
+    <string name="reset">Reset</string>
+    <string name="done">Done</string>
 </resources>

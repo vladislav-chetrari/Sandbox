@@ -5,15 +5,18 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import io.sandbox.app.base.BaseViewModel
+import io.sandbox.app.base.mutable
+import io.sandbox.app.base.mutableLiveData
 import io.sandbox.app.datasource.CharacterDataSource
-import io.sandbox.data.client.RickAndMortyClient
+import io.sandbox.app.datasource.factory.CharacterDataSourceFactory
 import io.sandbox.data.model.Character
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
+import java.util.*
 import javax.inject.Inject
 
 class CharacterListViewModel @Inject constructor(
-    private val characterClient: RickAndMortyClient
+    private val dataSourceFactory: CharacterDataSourceFactory
 ) : BaseViewModel() {
 
     private val combinedLoadStatesContainer = MutableStateFlow(CombinedLoadStatesContainer())
@@ -22,9 +25,8 @@ class CharacterListViewModel @Inject constructor(
             .map { it.combinedLoadStates }
             .filterNotNull()
 
-    val characters: Flow<PagingData<Character>> = Pager(config) {
-        CharacterDataSource(characterClient)
-    }.flow.cachedIn(viewModelScope)
+    val characters: Flow<PagingData<Character>> = Pager(config, pagingSourceFactory = dataSourceFactory).flow
+        .cachedIn(viewModelScope)
 
     val isRefreshing: LiveData<Boolean> = combinedLoadStates
         .map { it.refresh }
@@ -42,9 +44,25 @@ class CharacterListViewModel @Inject constructor(
         .onEach { onError(it) }
         .asLiveData(Dispatchers.Default)
 
+    val searchCriteria = mutableLiveData(CharacterSearchCriteria())
+
     fun onListLoadStateChanged(state: CombinedLoadStates) = launch {
         combinedLoadStatesContainer.emit(CombinedLoadStatesContainer(state))
     }
+
+    fun onSearch(name: String, status: String) {
+        searchCriteria.mutable.postValue(CharacterSearchCriteria(name.trim(), status.trim()))
+        val treatedName = if (name.isBlank()) null else name
+        val treatedStatus = if (status.isBlank()) null else status.toLowerCase(Locale.ROOT)
+        dataSourceFactory.requestParams = CharacterDataSource.RequestParams(treatedName, treatedStatus)
+    }
+
+    fun onSearchReset() {
+        searchCriteria.mutable.postValue(CharacterSearchCriteria())
+        dataSourceFactory.requestParams = CharacterDataSource.RequestParams()
+    }
+
+    fun onSearchCancel() = searchCriteria.mutable.postValue(searchCriteria.value)
 
     private val CombinedLoadStates.errorOrNull: Throwable?
         get() = listOf(append, prepend, refresh)
