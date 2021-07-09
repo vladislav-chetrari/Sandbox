@@ -1,4 +1,4 @@
-package io.sandbox.app.base
+package io.sandbox.app.base.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

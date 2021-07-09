@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import io.sandbox.app.base.ViewModelFactory
+import io.sandbox.app.base.vm.ViewModelFactory
 import io.sandbox.app.main.characters.CharacterListViewModel
 import io.sandbox.app.main.characters.character.CharacterDetailsViewModel
 import io.sandbox.di.ViewModelKey

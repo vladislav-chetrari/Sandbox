@@ -8,8 +8,8 @@ import androidx.core.content.ContextCompat.getColor
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.navArgs
 import io.sandbox.R
-import io.sandbox.app.base.BaseActivity
-import io.sandbox.app.base.BaseFragment
+import io.sandbox.app.base.view.BaseActivity
+import io.sandbox.app.base.view.BaseFragment
 import io.sandbox.app.extension.load
 import io.sandbox.data.model.Character
 import kotlinx.android.synthetic.main.fragment_character_details.*

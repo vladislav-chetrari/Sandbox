@@ -9,8 +9,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import io.sandbox.R
-import io.sandbox.app.base.BaseActivity
 import io.sandbox.app.base.lazily
+import io.sandbox.app.base.view.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(R.layout.activity_main) {

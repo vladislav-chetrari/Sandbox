@@ -2,7 +2,7 @@ package io.sandbox.app.main.characters.character
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
-import io.sandbox.app.base.BaseViewModel
+import io.sandbox.app.base.vm.BaseViewModel
 import io.sandbox.data.client.RickAndMortyClient
 import io.sandbox.data.model.Character
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +19,7 @@ class CharacterDetailsViewModel @Inject constructor(
     val character: LiveData<Character> = characterId
         .filter { it.isNotEmpty() }
         .map(client::character)
-        .asLiveData(Dispatchers.IO)
+        .asLiveData(Dispatchers.Default)
 
     fun onCharacterIdReceived(characterId: String) = launch { this.characterId.emit(characterId) }
 }

@@ -1,4 +1,4 @@
-package io.sandbox.app.base
+package io.sandbox.app.base.view
 
 import android.os.Bundle
 import androidx.activity.viewModels
