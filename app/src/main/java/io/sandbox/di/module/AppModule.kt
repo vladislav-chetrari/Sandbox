@@ -1,13 +1,17 @@
 package io.sandbox.di.module
 
+import android.content.Context
 import android.content.res.Resources
 import dagger.Module
 import dagger.Provides
-import io.sandbox.app.App
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 
 @Module
+@InstallIn(SingletonComponent::class)
 class AppModule {
 
     @Provides
-    fun resources(app: App): Resources = app.resources
+    fun resources(@ApplicationContext context: Context): Resources = context.resources
 }

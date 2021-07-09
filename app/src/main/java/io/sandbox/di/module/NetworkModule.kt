@@ -3,6 +3,8 @@ package io.sandbox.di.module
 import android.content.res.Resources
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import io.sandbox.R
 import io.sandbox.data.RickAndMortyApi
 import io.sandbox.di.ApiBaseUrl
@@ -14,6 +16,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 class NetworkModule {
 
     @Provides

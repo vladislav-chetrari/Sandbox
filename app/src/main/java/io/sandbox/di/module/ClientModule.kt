@@ -1,16 +1,16 @@
 package io.sandbox.di.module
 
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import io.sandbox.data.RickAndMortyApi
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import io.sandbox.data.client.DefaultRickAndMortyClient
 import io.sandbox.data.client.RickAndMortyClient
-import javax.inject.Singleton
 
 @Module
-class ClientModule {
+@InstallIn(SingletonComponent::class)
+abstract class ClientModule {
 
-    @Provides
-    @Singleton
-    fun rickAndMortyClient(api: RickAndMortyApi): RickAndMortyClient = DefaultRickAndMortyClient(api)
+    @Binds
+    abstract fun rickAndMortyClient(client: DefaultRickAndMortyClient): RickAndMortyClient
 }

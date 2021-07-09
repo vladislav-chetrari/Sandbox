@@ -3,6 +3,7 @@ package io.sandbox.app.main.characters
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.sandbox.app.base.view.list.ListLoadStatesContext
 import io.sandbox.app.base.vm.BaseViewModel
 import io.sandbox.app.main.characters.datasource.CharacterDataSource
@@ -12,6 +13,7 @@ import kotlinx.coroutines.flow.Flow
 import java.util.*
 import javax.inject.Inject
 
+@HiltViewModel
 class CharacterListViewModel @Inject constructor(
     private val dataSourceFactory: CharacterDataSourceFactory,
     private val loadStatesContext: ListLoadStatesContext

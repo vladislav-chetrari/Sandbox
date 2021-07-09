@@ -8,7 +8,6 @@ import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
-
 abstract class BaseViewModel : ViewModel() {
 
     protected val <T> LiveData<T>.mutable: MutableLiveData<T>

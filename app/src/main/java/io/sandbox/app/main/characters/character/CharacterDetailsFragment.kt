@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
 import androidx.core.content.ContextCompat.getColor
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import io.sandbox.R
 import io.sandbox.app.base.view.BaseActivity
