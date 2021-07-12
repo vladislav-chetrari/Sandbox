@@ -1,4 +1,4 @@
-package io.sandbox.app.main.characters.character
+package io.sandbox.app.main.routes.characters.character
 
 import android.graphics.Color.WHITE
 import android.os.Bundle
@@ -7,9 +7,10 @@ import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
 import androidx.core.content.ContextCompat.getColor
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.setupWithNavController
 import io.sandbox.R
-import io.sandbox.app.base.view.BaseActivity
 import io.sandbox.app.base.view.BaseFragment
 import io.sandbox.app.extension.load
 import io.sandbox.data.model.Character
@@ -23,7 +24,7 @@ class CharacterDetailsFragment : BaseFragment(R.layout.fragment_character_detail
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as BaseActivity).setSupportActionBar(toolbar)
+        toolbar.setupWithNavController(findNavController())
         (toolbar.navigationIcon as DrawerArrowDrawable).color = WHITE
         collapsingToolbar.setExpandedTitleColor(WHITE)
         collapsingToolbar.setCollapsedTitleTextColor(WHITE)

@@ -2,27 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/fragmentList"
-        android:icon="@drawable/ic_list_black_24dp"
-        android:title="@string/main_page_pagination" />
-
-    <item
-        android:id="@+id/fragmentMultitouch"
+        android:id="@+id/multitouchFragment"
         android:icon="@drawable/ic_touch_app_black_24dp"
         android:title="@string/main_page_multitouch" />
 
     <item
-        android:id="@+id/fragmentArrayItem"
-        android:icon="@drawable/ic_array_black_24dp"
-        android:title="@string/main_page_array" />
-
-    <item
-        android:id="@+id/fragmentSprings"
+        android:id="@+id/springsFragment"
         android:icon="@drawable/ic_polymer_black_24dp"
         android:title="@string/main_page_springs" />
 
     <item
-        android:id="@+id/fragmentMotion"
+        android:id="@+id/motionFragment"
         android:icon="@drawable/ic_motion_black_24dp"
         android:title="@string/main_page_motion" />
 

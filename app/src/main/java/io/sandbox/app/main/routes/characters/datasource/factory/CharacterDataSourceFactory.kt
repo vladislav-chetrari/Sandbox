@@ -1,7 +1,7 @@
-package io.sandbox.app.main.characters.datasource.factory
+package io.sandbox.app.main.routes.characters.datasource.factory
 
 import io.sandbox.app.base.view.list.paging.BaseDataSourceFactory
-import io.sandbox.app.main.characters.datasource.CharacterDataSource
+import io.sandbox.app.main.routes.characters.datasource.CharacterDataSource
 import io.sandbox.data.client.RickAndMortyClient
 import io.sandbox.data.model.Character
 import javax.inject.Inject

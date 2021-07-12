@@ -9,4 +9,7 @@
     <color name="amber">#ffab00</color>
     <color name="amberDark">#ff6f00</color>
     <color name="divider">#8000574B</color>
+    <color name="route_pagination_bg">#ce93d8</color>
+    <color name="route_navigation_bg">#90caf9</color>
+    <color name="route_other_bg">#80cbc4</color>
 </resources>

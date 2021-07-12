@@ -1,4 +1,4 @@
-package io.sandbox.app.main.characters.character
+package io.sandbox.app.main.routes.characters.character
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData

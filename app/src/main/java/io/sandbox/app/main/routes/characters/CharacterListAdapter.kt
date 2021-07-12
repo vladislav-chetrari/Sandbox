@@ -1,4 +1,4 @@
-package io.sandbox.app.main.characters
+package io.sandbox.app.main.routes.characters
 
 import android.view.LayoutInflater
 import android.view.View

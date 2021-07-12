@@ -3,12 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/fragmentList">
+    app:startDestination="@id/routesFragment">
+
+    <fragment
+        android:id="@+id/routesFragment"
+        android:name="io.sandbox.app.main.routes.RoutesFragment"
+        android:label="@string/routes_label"
+        tools:layout="@layout/fragment_routes">
+        <action
+            android:id="@+id/toCharacterListFragment"
+            app:destination="@id/fragmentList" />
+        <action
+            android:id="@+id/toArrayItemFragment"
+            app:destination="@id/fragmentArrayItem" />
+        <action
+            android:id="@+id/toOtherRoutesFragment"
+            app:destination="@id/otherRoutesFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragmentList"
-        android:name="io.sandbox.app.main.characters.CharacterListFragment"
-        android:label="@string/main_page_pagination"
+        android:name="io.sandbox.app.main.routes.characters.CharacterListFragment"
+        android:label="@string/route_pagination"
         tools:layout="@layout/fragment_character_list">
         <action
             android:id="@+id/navigateToCharacterDetails"
@@ -20,14 +36,8 @@
     </fragment>
 
     <fragment
-        android:id="@+id/fragmentMultitouch"
-        android:name="io.sandbox.app.main.multitouch.MultitouchFragment"
-        android:label="@string/main_page_multitouch"
-        tools:layout="@layout/fragment_multitouch" />
-
-    <fragment
         android:id="@+id/fragmentCharacter"
-        android:name="io.sandbox.app.main.characters.character.CharacterDetailsFragment"
+        android:name="io.sandbox.app.main.routes.characters.character.CharacterDetailsFragment"
         tools:layout="@layout/fragment_character_details">
         <argument
             android:name="characterId"
@@ -35,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentArrayItem"
-        android:name="io.sandbox.app.main.graph.ArrayItemFragment"
+        android:name="io.sandbox.app.main.routes.graph.ArrayItemFragment"
         tools:layout="@layout/fragment_array_item">
         <action
             android:id="@+id/action_fragmentArrayItem_self"
@@ -49,15 +59,19 @@
             android:defaultValue="0"
             app:argType="integer" />
     </fragment>
+
     <fragment
-        android:id="@+id/fragmentSprings"
-        android:name="io.sandbox.app.main.springs.SpringsFragment"
-        android:label="@string/main_page_springs"
-        tools:layout="@layout/fragment_springs" />
-    <fragment
-        android:id="@+id/fragmentMotion"
-        android:name="io.sandbox.app.main.motion.MotionFragment"
-        android:label="@string/main_page_motion"
-        tools:layout="@layout/fragment_motion" />
+        android:id="@+id/otherRoutesFragment"
+        android:name="io.sandbox.app.main.routes.other.OtherRoutesFragment"
+        android:label="@string/route_other"
+        tools:layout="@layout/fragment_other_routes">
+        <action
+            android:id="@+id/action_otherRoutesFragment_to_other_routes_nav_graph"
+            app:destination="@id/other_routes_nav_graph" />
+    </fragment>
+
+    <navigation android:id="@+id/other_routes_nav_graph">
+        <include app:graph="@navigation/other_routes_nav_graph" />
+    </navigation>
 
 </navigation>

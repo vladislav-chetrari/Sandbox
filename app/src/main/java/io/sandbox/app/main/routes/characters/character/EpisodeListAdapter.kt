@@ -1,4 +1,4 @@
-package io.sandbox.app.main.characters.character
+package io.sandbox.app.main.routes.characters.character
 
 import android.text.util.Linkify.WEB_URLS
 import android.text.util.Linkify.addLinks

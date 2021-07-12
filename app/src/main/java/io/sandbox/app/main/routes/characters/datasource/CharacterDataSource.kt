@@ -1,4 +1,4 @@
-package io.sandbox.app.main.characters.datasource
+package io.sandbox.app.main.routes.characters.datasource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

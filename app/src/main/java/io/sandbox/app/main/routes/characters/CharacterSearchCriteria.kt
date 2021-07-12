@@ -1,4 +1,4 @@
-package io.sandbox.app.main.characters
+package io.sandbox.app.main.routes.characters
 
 class CharacterSearchCriteria(name: String? = null, status: String? = null) {
     val name: String

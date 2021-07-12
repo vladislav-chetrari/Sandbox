@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/other_routes_nav_graph.xml"
+    app:startDestination="@id/multitouchFragment">
+
+    <fragment
+        android:id="@+id/multitouchFragment"
+        android:name="io.sandbox.app.main.routes.other.multitouch.MultitouchFragment"
+        android:label="@string/main_page_multitouch"
+        tools:layout="@layout/fragment_multitouch" />
+
+    <fragment
+        android:id="@+id/springsFragment"
+        android:name="io.sandbox.app.main.routes.other.springs.SpringsFragment"
+        android:label="@string/main_page_springs"
+        tools:layout="@layout/fragment_springs" />
+
+    <fragment
+        android:id="@+id/motionFragment"
+        android:name="io.sandbox.app.main.routes.other.motion.MotionFragment"
+        android:label="@string/main_page_motion"
+        tools:layout="@layout/fragment_motion" />
+
+</navigation>

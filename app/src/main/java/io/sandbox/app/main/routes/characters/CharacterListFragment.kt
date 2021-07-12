@@ -1,4 +1,4 @@
-package io.sandbox.app.main.characters
+package io.sandbox.app.main.routes.characters
 
 import android.os.Bundle
 import android.view.View
@@ -10,16 +10,18 @@ import androidx.core.content.getSystemService
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.snackbar.Snackbar
 import io.sandbox.R
-import io.sandbox.app.main.MainFragment
+import io.sandbox.app.base.view.BaseFragment
 import io.sandbox.data.model.Character
 import io.sandbox.data.model.CharacterStatus
+import kotlinx.android.synthetic.main.fragment_character_details.*
 import kotlinx.android.synthetic.main.fragment_character_list.*
 import kotlinx.coroutines.flow.collect
 
 
-class CharacterListFragment : MainFragment(R.layout.fragment_character_list) {
+class CharacterListFragment : BaseFragment(R.layout.fragment_character_list) {
 
     private val viewModel by viewModels<CharacterListViewModel>()
     private val listAdapter = CharacterListAdapter(::onCharacterSelected)
@@ -29,6 +31,7 @@ class CharacterListFragment : MainFragment(R.layout.fragment_character_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        toolbar.setupWithNavController(findNavController())
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
         setupList()
         setupSearch()

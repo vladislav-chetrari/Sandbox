@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Sandbox</string>
 
-    <string name="main_page_pagination">Pagination</string>
     <string name="main_page_multitouch">Multitouch</string>
     <string name="main_page_array">Array</string>
     <string name="main_page_springs">Springs</string>
@@ -29,4 +28,11 @@
     <string name="cancel">Cancel</string>
     <string name="reset">Reset</string>
     <string name="done">Done</string>
+    <string name="route_pagination">Pagination</string>
+    <string name="route_pagination_description">Pagination with query params and REST interaction via kotlin coroutines</string>
+    <string name="route_navigation">Navigation</string>
+    <string name="route_navigation_description">Self-navigation passing argument</string>
+    <string name="route_other">Other</string>
+    <string name="route_other_description">Other experiments</string>
+    <string name="routes_label">Routes</string>
 </resources>

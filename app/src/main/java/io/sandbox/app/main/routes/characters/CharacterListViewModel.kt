@@ -1,4 +1,4 @@
-package io.sandbox.app.main.characters
+package io.sandbox.app.main.routes.characters
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -6,8 +6,8 @@ import androidx.paging.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.sandbox.app.base.view.list.ListLoadStatesContext
 import io.sandbox.app.base.vm.BaseViewModel
-import io.sandbox.app.main.characters.datasource.CharacterDataSource
-import io.sandbox.app.main.characters.datasource.factory.CharacterDataSourceFactory
+import io.sandbox.app.main.routes.characters.datasource.CharacterDataSource
+import io.sandbox.app.main.routes.characters.datasource.factory.CharacterDataSourceFactory
 import io.sandbox.data.model.Character
 import kotlinx.coroutines.flow.Flow
 import java.util.*
