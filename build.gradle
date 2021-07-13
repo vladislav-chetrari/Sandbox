@@ -6,6 +6,7 @@ buildscript {
         lifecycle = '2.2.0'
         navigation = '2.3.5'
         retrofit = '2.8.1'
+        roomDB = '2.3.0'
     }
     repositories {
         google()
