@@ -14,8 +14,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.snackbar.Snackbar
 import io.sandbox.R
 import io.sandbox.app.base.view.BaseFragment
-import io.sandbox.data.model.Character
-import io.sandbox.data.model.CharacterStatus
+import io.sandbox.data.network.model.response.CharacterResponse
+import io.sandbox.data.type.CharacterStatus
 import kotlinx.android.synthetic.main.fragment_character_details.*
 import kotlinx.android.synthetic.main.fragment_character_list.*
 import kotlinx.coroutines.flow.collect
@@ -107,7 +107,7 @@ class CharacterListFragment : BaseFragment(R.layout.fragment_character_list) {
         refreshLayout.setOnRefreshListener { listAdapter.refresh() }
     }
 
-    private fun onCharacterSelected(character: Character) {
+    private fun onCharacterSelected(character: CharacterResponse) {
         findNavController().navigate(CharacterListFragmentDirections.navigateToCharacterDetails(character.id))
     }
 

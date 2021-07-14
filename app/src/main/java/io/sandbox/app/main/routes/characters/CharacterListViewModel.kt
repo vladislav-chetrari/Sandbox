@@ -6,22 +6,22 @@ import androidx.paging.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.sandbox.app.base.view.list.ListLoadStatesContext
 import io.sandbox.app.base.vm.BaseViewModel
-import io.sandbox.app.main.routes.characters.datasource.CharacterDataSource
-import io.sandbox.app.main.routes.characters.datasource.factory.CharacterDataSourceFactory
-import io.sandbox.data.model.Character
+import io.sandbox.app.main.routes.characters.datasource.CharacterPagingSource
+import io.sandbox.app.main.routes.characters.datasource.factory.CharacterPagingSourceFactory
+import io.sandbox.data.network.model.response.CharacterResponse
 import kotlinx.coroutines.flow.Flow
 import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
 class CharacterListViewModel @Inject constructor(
-    private val dataSourceFactory: CharacterDataSourceFactory,
+    private val dataSourceFactory: CharacterPagingSourceFactory,
     private val loadStatesContext: ListLoadStatesContext
 ) : BaseViewModel() {
 
     val searchCriteria = mutableLiveData(CharacterSearchCriteria())
 
-    val characters: Flow<PagingData<Character>> = Pager(config, pagingSourceFactory = dataSourceFactory)
+    val characters: Flow<PagingData<CharacterResponse>> = Pager(config, pagingSourceFactory = dataSourceFactory)
         .flow.cachedIn(viewModelScope)
 
     val isRefreshing: LiveData<Boolean> = loadStatesContext.isRefreshing
@@ -38,12 +38,12 @@ class CharacterListViewModel @Inject constructor(
         searchCriteria.mutable.postValue(CharacterSearchCriteria(name.trim(), status.trim()))
         val treatedName = if (name.isBlank()) null else name
         val treatedStatus = if (status.isBlank()) null else status.toLowerCase(Locale.ROOT)
-        dataSourceFactory.params = CharacterDataSource.RequestParams(treatedName, treatedStatus)
+        dataSourceFactory.params = CharacterPagingSource.RequestParams(treatedName, treatedStatus)
     }
 
     fun onSearchReset() {
         searchCriteria.mutable.postValue(CharacterSearchCriteria())
-        dataSourceFactory.params = CharacterDataSource.RequestParams()
+        dataSourceFactory.params = CharacterPagingSource.RequestParams()
     }
 
     fun onSearchCancel() = searchCriteria.mutable.postValue(searchCriteria.value)

@@ -1,4 +1,4 @@
-package io.sandbox.data.model
+package io.sandbox.data.type
 
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes

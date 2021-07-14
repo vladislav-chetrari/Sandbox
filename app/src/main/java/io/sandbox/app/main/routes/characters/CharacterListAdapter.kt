@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import io.sandbox.R
 import io.sandbox.app.extension.load
-import io.sandbox.data.model.Character
-import io.sandbox.data.model.CharacterStatus
+import io.sandbox.data.network.model.response.CharacterResponse
+import io.sandbox.data.type.CharacterStatus
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.list_item_character.*
 
 class CharacterListAdapter(
-    private val onItemSelected: (Character) -> Unit
-) : PagingDataAdapter<Character, CharacterListAdapter.ViewHolder>(DiffCallback()) {
+    private val onItemSelected: (CharacterResponse) -> Unit
+) : PagingDataAdapter<CharacterResponse, CharacterListAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.list_item_character, parent, false), onItemSelected
@@ -27,10 +27,10 @@ class CharacterListAdapter(
 
     class ViewHolder(
         override val containerView: View,
-        private val onItemSelected: (Character) -> Unit
+        private val onItemSelected: (CharacterResponse) -> Unit
     ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-        fun bind(item: Character?) {
+        fun bind(item: CharacterResponse?) {
             containerView.setOnClickListener { item?.let(onItemSelected) }
             image.load(item?.image)
             name.text = item?.name
@@ -47,8 +47,8 @@ class CharacterListAdapter(
         }
     }
 
-    private class DiffCallback : DiffUtil.ItemCallback<Character>() {
-        override fun areItemsTheSame(oldItem: Character, newItem: Character) = oldItem.id == newItem.id
-        override fun areContentsTheSame(oldItem: Character, newItem: Character) = oldItem == newItem
+    private class DiffCallback : DiffUtil.ItemCallback<CharacterResponse>() {
+        override fun areItemsTheSame(oldItem: CharacterResponse, newItem: CharacterResponse) = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: CharacterResponse, newItem: CharacterResponse) = oldItem == newItem
     }
 }

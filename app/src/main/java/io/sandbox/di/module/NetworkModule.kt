@@ -6,7 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.sandbox.R
-import io.sandbox.data.RickAndMortyApi
+import io.sandbox.data.network.RickAndMortyApi
 import io.sandbox.di.ApiBaseUrl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
