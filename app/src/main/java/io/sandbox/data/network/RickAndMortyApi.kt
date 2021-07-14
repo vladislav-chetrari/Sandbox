@@ -1,7 +1,7 @@
-package io.sandbox.data
+package io.sandbox.data.network
 
-import io.sandbox.data.model.Character
-import io.sandbox.data.model.CharactersResponse
+import io.sandbox.data.network.model.response.CharacterResponse
+import io.sandbox.data.network.model.response.CharactersResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -18,5 +18,5 @@ interface RickAndMortyApi {
     @GET("character/{characterId}")
     suspend fun character(
         @Path("characterId") characterId: String
-    ): Character
+    ): CharacterResponse
 }

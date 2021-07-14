@@ -2,15 +2,15 @@ package io.sandbox.app.main.routes.characters.datasource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import io.sandbox.data.client.RickAndMortyClient
-import io.sandbox.data.model.Character
+import io.sandbox.data.network.client.CharactersClient
+import io.sandbox.data.network.model.response.CharacterResponse
 
-class CharacterDataSource(
-    private val client: RickAndMortyClient,
+class CharacterPagingSource(
+    private val client: CharactersClient,
     private val requestParams: RequestParams
-) : PagingSource<Int, Character>() {
+) : PagingSource<Int, CharacterResponse>() {
 
-    override fun getRefreshKey(state: PagingState<Int, Character>): Int? = null
+    override fun getRefreshKey(state: PagingState<Int, CharacterResponse>): Int? = null
 
     override suspend fun load(params: LoadParams<Int>) = try {
         val page = params.key

@@ -2,7 +2,7 @@ package io.sandbox.app.base.view.list.paging
 
 import androidx.paging.PagingSource
 
-abstract class BaseDataSourceFactory<K : Any, V : Any, P>(
+abstract class BasePagingSourceFactory<K : Any, V : Any, P>(
     defaultParams: P
 ) : () -> PagingSource<K, V> {
 

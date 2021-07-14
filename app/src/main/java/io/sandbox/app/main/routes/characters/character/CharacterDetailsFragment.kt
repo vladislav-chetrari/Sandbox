@@ -13,7 +13,7 @@ import androidx.navigation.ui.setupWithNavController
 import io.sandbox.R
 import io.sandbox.app.base.view.BaseFragment
 import io.sandbox.app.extension.load
-import io.sandbox.data.model.Character
+import io.sandbox.data.db.entity.Character
 import kotlinx.android.synthetic.main.fragment_character_details.*
 
 class CharacterDetailsFragment : BaseFragment(R.layout.fragment_character_details) {
@@ -48,8 +48,9 @@ class CharacterDetailsFragment : BaseFragment(R.layout.fragment_character_detail
         }
         species.value.text = character.species
         gender.value.text = character.gender
-        location.value.text = character.location.name
-        adapter.submitList(character.episodes)
+//        TODO add episodes
+//        location.value.text = character.location.name
+//        adapter.submitList(character.episodes)
         content.isVisible = true
     }
 }
