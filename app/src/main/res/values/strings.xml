@@ -35,4 +35,10 @@
     <string name="route_other">Other</string>
     <string name="route_other_description">Other experiments</string>
     <string name="routes_label">Routes</string>
+    <string name="route_camera">Camera</string>
+    <string name="route_camera_description">Camera interaction</string>
+    <string name="camera_permission_rationale_title">Camera permission grant required</string>
+    <string name="camera_permission_rationale_message">For further usage of this screen, please proceed to settings and grant camera permission.\nOtherwise you\'ll have to leave this screen.</string>
+    <string name="open_app_settings_label">Go to settings</string>
+    <string name="exit_label">Exit</string>
 </resources>
