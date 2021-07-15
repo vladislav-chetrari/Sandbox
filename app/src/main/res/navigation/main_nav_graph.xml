@@ -5,6 +5,10 @@
     android:id="@+id/nav_graph.xml"
     app:startDestination="@id/routesFragment">
 
+    <navigation android:id="@+id/other_routes_nav_graph">
+        <include app:graph="@navigation/other_routes_nav_graph" />
+    </navigation>
+
     <fragment
         android:id="@+id/routesFragment"
         android:name="io.sandbox.app.main.routes.RoutesFragment"
@@ -19,6 +23,9 @@
         <action
             android:id="@+id/toOtherRoutesFragment"
             app:destination="@id/otherRoutesFragment" />
+        <action
+            android:id="@+id/toCameraFragment"
+            app:destination="@id/cameraFragment" />
     </fragment>
 
     <fragment
@@ -70,8 +77,10 @@
             app:destination="@id/other_routes_nav_graph" />
     </fragment>
 
-    <navigation android:id="@+id/other_routes_nav_graph">
-        <include app:graph="@navigation/other_routes_nav_graph" />
-    </navigation>
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="io.sandbox.app.main.routes.hardware.CameraFragment"
+        android:label="@string/route_camera"
+        tools:layout="@layout/fragment_camera" />
 
 </navigation>
