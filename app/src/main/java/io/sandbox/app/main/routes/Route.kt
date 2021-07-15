@@ -19,6 +19,11 @@ enum class Route(
         R.string.route_navigation_description,
         R.color.route_navigation_bg
     ),
+    CAMERA(
+        R.string.route_camera,
+        R.string.route_camera_description,
+        R.color.route_camera_bg
+    ),
     OTHER(
         R.string.route_other,
         R.string.route_other_description,
