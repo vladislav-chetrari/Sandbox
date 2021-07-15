@@ -2,6 +2,7 @@ package io.sandbox.data.domain
 
 import kotlinx.coroutines.*
 
+//TODO Consider removing
 abstract class UseCase<in Input, Output>(private val execute: (Input) -> Output) {
 
     private val job = Job()
