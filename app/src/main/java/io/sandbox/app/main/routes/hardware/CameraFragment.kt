@@ -16,7 +16,6 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat.getMainExecutor
 import androidx.core.content.PermissionChecker.PERMISSION_GRANTED
 import androidx.core.content.PermissionChecker.checkSelfPermission
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import io.sandbox.R
@@ -27,7 +26,6 @@ import kotlinx.android.synthetic.main.fragment_camera.*
 
 class CameraFragment : BaseFragment(R.layout.fragment_camera) {
 
-    private val viewModel by viewModels<CameraViewModel>()
     private lateinit var activityResultLauncher: ActivityResultLauncher<String>
     private var cameraProvider: ProcessCameraProvider? = null
 
@@ -46,14 +44,9 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
         requestPermission()
     }
 
-    private fun requestPermission() {
-        val initialCheckResult = checkSelfPermission(requireContext(), CAMERA)
-        if (initialCheckResult == PERMISSION_GRANTED) {
-            onPermissionResult(true)
-            return
-        }
-        activityResultLauncher.launch(CAMERA)
-    }
+    private fun requestPermission() =
+        if (checkSelfPermission(requireContext(), CAMERA) == PERMISSION_GRANTED) onPermissionResult(true)
+        else activityResultLauncher.launch(CAMERA)
 
     private fun onPermissionResult(cameraUsageGranted: Boolean) =
         if (cameraUsageGranted) setupCameraView()
@@ -69,6 +62,7 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
             cameraProvider = cameraProviderFuture.get()
             val lensFacing = if (hasBackCamera()) CameraSelector.LENS_FACING_BACK else null
             lensFacing ?: return@addListener
+            cameraProvider?.unbindAll()
             val cameraSelector = CameraSelector.Builder().requireLensFacing(lensFacing).build()
             cameraProvider?.bindToLifecycle(viewLifecycleOwner, cameraSelector, preview)
             preview.setSurfaceProvider(previewView.surfaceProvider)
