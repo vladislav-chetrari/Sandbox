@@ -30,6 +30,7 @@ class RoutesFragment : BaseFragment(R.layout.fragment_routes) {
             PAGINATION -> RoutesFragmentDirections.toCharacterListFragment()
             NAVIGATION -> RoutesFragmentDirections.toArrayItemFragment()
             CAMERA -> RoutesFragmentDirections.toCameraFragment()
+            SENSORS -> RoutesFragmentDirections.toSensorListFragment()
             OTHER -> RoutesFragmentDirections.toOtherRoutesFragment()
         }
     )

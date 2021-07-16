@@ -24,6 +24,11 @@ enum class Route(
         R.string.route_camera_description,
         R.color.route_camera_bg
     ),
+    SENSORS(
+        R.string.route_sensors,
+        R.string.route_sensors_description,
+        R.color.route_sensors,
+    ),
     OTHER(
         R.string.route_other,
         R.string.route_other_description,
