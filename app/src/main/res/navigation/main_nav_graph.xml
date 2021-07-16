@@ -12,7 +12,7 @@
     <fragment
         android:id="@+id/routesFragment"
         android:name="io.sandbox.app.main.routes.RoutesFragment"
-        android:label="@string/routes_label"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_routes">
         <action
             android:id="@+id/toCharacterListFragment"
@@ -79,7 +79,7 @@
 
     <fragment
         android:id="@+id/cameraFragment"
-        android:name="io.sandbox.app.main.routes.hardware.CameraFragment"
+        android:name="io.sandbox.app.main.routes.hardware.camera.CameraPreviewFragment"
         android:label="@string/route_camera"
         tools:layout="@layout/fragment_camera" />
 

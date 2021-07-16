@@ -1,4 +1,4 @@
-package io.sandbox.app.main.routes.hardware
+package io.sandbox.app.main.routes.hardware.camera
 
 import android.Manifest.permission.CAMERA
 import android.content.Intent
@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.app_bar_layout.*
 import kotlinx.android.synthetic.main.fragment_camera.*
 
 
-class CameraFragment : BaseFragment(R.layout.fragment_camera) {
+class CameraPreviewFragment : BaseFragment(R.layout.fragment_camera) {
 
     private lateinit var activityResultLauncher: ActivityResultLauncher<String>
     private var cameraProvider: ProcessCameraProvider? = null
