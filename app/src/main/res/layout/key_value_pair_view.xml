@@ -8,18 +8,19 @@
 
     <TextView
         android:id="@+id/keyTextView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_weight="1"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
         tools:text="Key" />
 
     <TextView
         android:id="@+id/valueTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginStart="@dimen/common_8dp"
+        android:textAlignment="viewEnd"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
         tools:text="Value" />
 

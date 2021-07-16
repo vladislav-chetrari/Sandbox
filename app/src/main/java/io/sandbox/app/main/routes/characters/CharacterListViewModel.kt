@@ -10,7 +10,6 @@ import io.sandbox.app.main.routes.characters.datasource.CharacterPagingSource
 import io.sandbox.app.main.routes.characters.datasource.factory.CharacterPagingSourceFactory
 import io.sandbox.data.network.model.response.CharacterResponse
 import kotlinx.coroutines.flow.Flow
-import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -37,7 +36,7 @@ class CharacterListViewModel @Inject constructor(
     fun onSearch(name: String, status: String) {
         searchCriteria.mutable.postValue(CharacterSearchCriteria(name.trim(), status.trim()))
         val treatedName = if (name.isBlank()) null else name
-        val treatedStatus = if (status.isBlank()) null else status.toLowerCase(Locale.ROOT)
+        val treatedStatus = if (status.isBlank()) null else status.lowercase()
         dataSourceFactory.params = CharacterPagingSource.RequestParams(treatedName, treatedStatus)
     }
 
