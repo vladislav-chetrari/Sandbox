@@ -3,8 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:foreground="?selectableItemBackground"
     android:orientation="vertical"
-    android:padding="@dimen/common_16dp">
+    android:padding="@dimen/common_8dp">
+
+    <io.sandbox.app.widget.KeyValuePairView
+        android:id="@+id/type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:keyText="Type" />
 
     <io.sandbox.app.widget.KeyValuePairView
         android:id="@+id/name"
