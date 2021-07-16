@@ -26,6 +26,9 @@
         <action
             android:id="@+id/toCameraFragment"
             app:destination="@id/cameraFragment" />
+        <action
+            android:id="@+id/toSensorListFragment"
+            app:destination="@id/sensorListFragment" />
     </fragment>
 
     <fragment
@@ -82,5 +85,11 @@
         android:name="io.sandbox.app.main.routes.hardware.camera.CameraPreviewFragment"
         android:label="@string/route_camera"
         tools:layout="@layout/fragment_camera" />
+
+    <fragment
+        android:id="@+id/sensorListFragment"
+        android:name="io.sandbox.app.main.routes.hardware.sensors.SensorListFragment"
+        android:label="@string/route_sensors"
+        tools:layout="@layout/fragment_sensor_list" />
 
 </navigation>

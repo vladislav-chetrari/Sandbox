@@ -13,4 +13,5 @@
     <color name="route_navigation_bg">#90caf9</color>
     <color name="route_other_bg">#80cbc4</color>
     <color name="route_camera_bg">#ef9a9a</color>
+    <color name="route_sensors">#bcaaa4</color>
 </resources>

@@ -41,4 +41,6 @@
     <string name="camera_permission_rationale_message">For further usage of this screen, please proceed to settings and grant camera permission.\nOtherwise you\'ll have to leave this screen.</string>
     <string name="open_app_settings_label">Go to settings</string>
     <string name="exit_label">Exit</string>
+    <string name="route_sensors">Sensors</string>
+    <string name="route_sensors_description">Reading sensor data</string>
 </resources>
