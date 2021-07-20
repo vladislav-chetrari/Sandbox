@@ -26,7 +26,10 @@ class MultitouchView @JvmOverloads constructor(
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         event ?: return super.onTouchEvent(event)
         pointers.clear()
-        pointers.addAll((0 until event.pointerCount).map { Point(event.getX(it).toInt(), event.getY(it).toInt()) })
+        if (event.action != ACTION_UP || event.pointerCount != 1) {
+            pointers.addAll((0 until event.pointerCount)
+                .map { Point(event.getX(it).toInt(), event.getY(it).toInt()) })
+        }
         postInvalidate()
         return true
     }
