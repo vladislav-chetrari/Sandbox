@@ -4,11 +4,11 @@ import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import io.sandbox.R
+import io.sandbox.app.extension.color
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.list_item_route.*
 
@@ -34,7 +34,7 @@ class RouteListAdapter(
         fun bind(route: Route) {
             title.text = res.getString(route.titleResId)
             description.text = res.getString(route.descriptionResId)
-            containerView.setBackgroundColor(ResourcesCompat.getColor(res, route.colorResId, null))
+            containerView.setBackgroundColor(res.color(route.colorResId))
             containerView.setOnClickListener { onRouteSelect(route) }
         }
     }
