@@ -23,4 +23,10 @@
         android:label="@string/main_page_motion"
         tools:layout="@layout/fragment_motion" />
 
+    <fragment
+        android:id="@+id/composableFragment"
+        android:name="io.sandbox.app.main.routes.other.composable.ComposableFragment"
+        android:label="@string/main_page_composable"
+        tools:layout="@layout/fragment_composable" />
+
 </navigation>
