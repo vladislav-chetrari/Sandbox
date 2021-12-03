@@ -43,4 +43,5 @@
     <string name="exit_label">Exit</string>
     <string name="route_sensors">Sensors</string>
     <string name="route_sensors_description">Reading sensor data</string>
+    <string name="main_page_compose">Compose</string>
 </resources>
