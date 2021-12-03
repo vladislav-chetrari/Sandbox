@@ -16,4 +16,9 @@
         android:icon="@drawable/ic_motion_black_24dp"
         android:title="@string/main_page_motion" />
 
+    <item
+        android:id="@+id/composeFragment"
+        android:icon="@drawable/ic_outline_compose"
+        android:title="@string/main_page_compose"/>
+
 </menu>
