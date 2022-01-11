@@ -10,8 +10,11 @@ import javax.inject.Inject
 @HiltViewModel
 internal class ComposeViewModel @Inject constructor() : BaseViewModel() {
 
-    val timer: LiveData<Int> = TimerLiveData(viewModelScope.coroutineContext)
-    val isUserBored: LiveData<Boolean> = timer.map { it >= USER_BORED_SECONDS }
+    private val timer: LiveData<Int> = TimerLiveData(viewModelScope.coroutineContext)
+    val mode = timer.map {
+        if (it >= USER_BORED_SECONDS) ComposeViewMode.Timer(it)
+        else ComposeViewMode.Greeting
+    }
 
     private companion object {
         const val USER_BORED_SECONDS = 5

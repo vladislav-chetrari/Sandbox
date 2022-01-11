@@ -45,5 +45,5 @@
     <string name="route_sensors_description">Reading sensor data</string>
     <string name="main_page_compose">Compose</string>
     <string name="compose_greeting">This is integrated compose view</string>
-    <string name="compose_timer_label">You\'ve been staring at this page for %d seconds</string>
+    <string name="compose_timer_label">You already spent %d seconds on this screen.</string>
 </resources>
