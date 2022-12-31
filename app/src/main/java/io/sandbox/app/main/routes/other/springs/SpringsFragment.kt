@@ -10,19 +10,15 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import io.sandbox.R
 import io.sandbox.app.base.view.BaseFragment
-import kotlinx.android.synthetic.main.app_bar_layout.*
-import kotlinx.android.synthetic.main.app_bar_layout.toolbar
-import kotlinx.android.synthetic.main.fragment_character_details.*
-import kotlinx.android.synthetic.main.fragment_springs.*
+import io.sandbox.databinding.FragmentSpringsBinding
 
-class SpringsFragment : BaseFragment(R.layout.fragment_springs) {
+class SpringsFragment : BaseFragment<FragmentSpringsBinding>(FragmentSpringsBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        toolbar.setupWithNavController(findNavController())
-        fab.springPosition(SpringForce.STIFFNESS_MEDIUM, SpringForce.DAMPING_RATIO_HIGH_BOUNCY)
+        binding.appBarInclude.toolbar.setupWithNavController(findNavController())
+        binding.fab.springPosition(SpringForce.STIFFNESS_MEDIUM, SpringForce.DAMPING_RATIO_HIGH_BOUNCY)
     }
 
     private fun View.springPosition(

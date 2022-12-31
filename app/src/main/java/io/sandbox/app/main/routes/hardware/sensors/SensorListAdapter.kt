@@ -2,21 +2,18 @@ package io.sandbox.app.main.routes.hardware.sensors
 
 import android.hardware.Sensor
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import io.sandbox.R
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.list_item_sensor.*
+import io.sandbox.databinding.ListItemSensorBinding
 
 class SensorListAdapter(
     private val onSensorSelected: (Sensor) -> Unit
 ) : ListAdapter<Sensor, SensorListAdapter.ViewHolder>(ItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.list_item_sensor, parent, false)
+        ListItemSensorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -24,15 +21,15 @@ class SensorListAdapter(
     }
 
     class ViewHolder(
-        override val containerView: View
-    ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+        private val binding: ListItemSensorBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(sensor: Sensor, onSensorSelected: (Sensor) -> Unit) {
-            type.value.text = sensor.stringType
-            name.value.text = sensor.name
-            vendor.value.text = sensor.vendor
-            version.value.text = sensor.version.toString()
-            containerView.setOnClickListener { onSensorSelected(sensor) }
+            binding.type.value.text = sensor.stringType
+            binding.name.value.text = sensor.name
+            binding.vendor.value.text = sensor.vendor
+            binding.version.value.text = sensor.version.toString()
+            itemView.setOnClickListener { onSensorSelected(sensor) }
         }
     }
 

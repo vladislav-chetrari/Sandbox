@@ -5,18 +5,18 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import io.sandbox.R
+import dagger.hilt.android.AndroidEntryPoint
 import io.sandbox.app.base.view.BaseFragment
-import kotlinx.android.synthetic.main.app_bar_layout.*
-import kotlinx.android.synthetic.main.fragment_compose.*
+import io.sandbox.databinding.FragmentComposeBinding
 
-class ComposeFragment : BaseFragment(R.layout.fragment_compose) {
+@AndroidEntryPoint
+class ComposeFragment : BaseFragment<FragmentComposeBinding>(FragmentComposeBinding::inflate) {
 
     private val viewModel by viewModels<ComposeViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        composeView.setContent { ComposeFragmentLayout(viewModel) }
         super.onViewCreated(view, savedInstanceState)
-        toolbar.setupWithNavController(findNavController())
+        binding.appBarInclude.toolbar.setupWithNavController(findNavController())
+        binding.composeView.setContent { ComposeFragmentLayout(viewModel) }
     }
 }

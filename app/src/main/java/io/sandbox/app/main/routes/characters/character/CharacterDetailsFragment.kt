@@ -10,13 +10,14 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
-import io.sandbox.R
+import dagger.hilt.android.AndroidEntryPoint
 import io.sandbox.app.base.view.BaseFragment
 import io.sandbox.app.extension.load
 import io.sandbox.data.db.entity.Character
-import kotlinx.android.synthetic.main.fragment_character_details.*
+import io.sandbox.databinding.FragmentCharacterDetailsBinding
 
-class CharacterDetailsFragment : BaseFragment(R.layout.fragment_character_details) {
+@AndroidEntryPoint
+class CharacterDetailsFragment : BaseFragment<FragmentCharacterDetailsBinding>(FragmentCharacterDetailsBinding::inflate) {
 
     private val args by navArgs<CharacterDetailsFragmentArgs>()
     private val viewModel by viewModels<CharacterDetailsViewModel>()
@@ -24,33 +25,33 @@ class CharacterDetailsFragment : BaseFragment(R.layout.fragment_character_detail
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        toolbar.setupWithNavController(findNavController())
-        (toolbar.navigationIcon as DrawerArrowDrawable).color = WHITE
-        collapsingToolbar.setExpandedTitleColor(WHITE)
-        collapsingToolbar.setCollapsedTitleTextColor(WHITE)
-        episodesList.adapter = adapter
+        binding.toolbar.setupWithNavController(findNavController())
+        (binding.toolbar.navigationIcon as DrawerArrowDrawable).color = WHITE
+        binding.collapsingToolbar.setExpandedTitleColor(WHITE)
+        binding.collapsingToolbar.setCollapsedTitleTextColor(WHITE)
+        binding.episodesList.adapter = adapter
         viewModel.onCharacterIdReceived(args.characterId)
     }
 
     override fun observeLiveData() = viewModel.character.observe(::showCharacter)
 
     override fun onDestroyView() {
-        episodesList.adapter = null
+        binding.episodesList.adapter = null
         super.onDestroyView()
     }
 
     private fun showCharacter(character: Character) {
-        collapsingToolbar.title = character.name
-        image.load(character.image)
+        binding.collapsingToolbar.title = character.name
+        binding.image.load(character.image)
         with(character.status) {
-            status.value.setText(stringResId)
-            status.value.setTextColor(getColor(requireContext(), colorResId))
+            binding.status.value.setText(stringResId)
+            binding.status.value.setTextColor(getColor(requireContext(), colorResId))
         }
-        species.value.text = character.species
-        gender.value.text = character.gender
+        binding.species.value.text = character.species
+        binding.gender.value.text = character.gender
 //        TODO add episodes
 //        location.value.text = character.location.name
 //        adapter.submitList(character.episodes)
-        content.isVisible = true
+        binding.content.isVisible = true
     }
 }

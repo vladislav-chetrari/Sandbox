@@ -6,7 +6,9 @@
     android:orientation="vertical"
     tools:context=".app.main.routes.other.multitouch.MultitouchFragment">
 
-    <include layout="@layout/app_bar_layout" />
+    <include
+        android:id="@+id/appBarInclude"
+        layout="@layout/app_bar_layout" />
 
     <io.sandbox.app.widget.MultitouchView
         android:layout_width="match_parent"

@@ -1,7 +1,6 @@
 package io.sandbox.app.main.routes.characters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -12,36 +11,36 @@ import io.sandbox.R
 import io.sandbox.app.extension.load
 import io.sandbox.data.network.model.response.CharacterResponse
 import io.sandbox.data.type.CharacterStatus
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.list_item_character.*
+import io.sandbox.databinding.ListItemCharacterBinding
 
 class CharacterListAdapter(
     private val onItemSelected: (CharacterResponse) -> Unit
 ) : PagingDataAdapter<CharacterResponse, CharacterListAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.list_item_character, parent, false), onItemSelected
+        ListItemCharacterBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+        onItemSelected
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position))
 
     class ViewHolder(
-        override val containerView: View,
+        private val binding: ListItemCharacterBinding,
         private val onItemSelected: (CharacterResponse) -> Unit
-    ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: CharacterResponse?) {
-            containerView.setOnClickListener { item?.let(onItemSelected) }
-            image.load(item?.image)
-            name.text = item?.name
-            location.text = item?.location?.name
-            species.text = item?.species
-            status.setStatus(item?.status)
+            itemView.setOnClickListener { item?.let(onItemSelected) }
+            binding.image.load(item?.image)
+            binding.name.text = item?.name
+            binding.location.text = item?.location?.name
+            binding.species.text = item?.species
+            binding.status.setStatus(item?.status)
         }
 
         private fun TextView.setStatus(status: CharacterStatus?) {
             if (status == null) return
-            val res = containerView.resources
+            val res = itemView.resources
             text = res.getString(R.string.home_list_item_status, res.getString(status.stringResId))
             setTextColor(ContextCompat.getColor(context, status.colorResId))
         }
