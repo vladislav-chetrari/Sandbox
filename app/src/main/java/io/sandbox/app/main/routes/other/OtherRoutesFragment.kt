@@ -6,13 +6,13 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import io.sandbox.R
 import io.sandbox.app.base.view.BaseFragment
-import kotlinx.android.synthetic.main.fragment_other_routes.*
+import io.sandbox.databinding.FragmentOtherRoutesBinding
 
-class OtherRoutesFragment : BaseFragment(R.layout.fragment_other_routes) {
+class OtherRoutesFragment : BaseFragment<FragmentOtherRoutesBinding>(FragmentOtherRoutesBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(view.findViewById(R.id.childHostFragment))
-        bottomNavigationView.setupWithNavController(navController)
+        binding.bottomNavigationView.setupWithNavController(navController)
     }
 }

@@ -7,13 +7,13 @@ import androidx.navigation.ui.setupWithNavController
 import io.sandbox.R
 import io.sandbox.app.base.view.BaseFragment
 import io.sandbox.app.extension.drawable
-import kotlinx.android.synthetic.main.app_bar_layout.*
+import io.sandbox.databinding.FragmentMultitouchBinding
 
-class MultitouchFragment : BaseFragment(R.layout.fragment_multitouch) {
+class MultitouchFragment : BaseFragment<FragmentMultitouchBinding>(FragmentMultitouchBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        toolbar.run {
+        binding.appBarInclude.toolbar.run {
             setupWithNavController(findNavController())
             //fix embedded nav graph not displaying back button on toolbar
             navigationIcon = requireContext().drawable(R.drawable.ic_arrow_back_24)

@@ -4,14 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import io.sandbox.R
 import io.sandbox.app.base.view.BaseFragment
-import kotlinx.android.synthetic.main.fragment_character_details.*
+import io.sandbox.databinding.FragmentMotionBinding
 
-class MotionFragment : BaseFragment(R.layout.fragment_motion) {
+class MotionFragment : BaseFragment<FragmentMotionBinding>(FragmentMotionBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        toolbar.setupWithNavController(findNavController())
+        binding.appBarInclude.toolbar.setupWithNavController(findNavController())
     }
 }

@@ -20,11 +20,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import io.sandbox.R
 import io.sandbox.app.base.view.BaseFragment
-import kotlinx.android.synthetic.main.app_bar_layout.*
-import kotlinx.android.synthetic.main.fragment_camera.*
+import io.sandbox.databinding.FragmentCameraBinding
 
-
-class CameraPreviewFragment : BaseFragment(R.layout.fragment_camera) {
+class CameraPreviewFragment : BaseFragment<FragmentCameraBinding>(FragmentCameraBinding::inflate) {
 
     private lateinit var activityResultLauncher: ActivityResultLauncher<String>
     private var cameraProvider: ProcessCameraProvider? = null
@@ -36,7 +34,7 @@ class CameraPreviewFragment : BaseFragment(R.layout.fragment_camera) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        toolbar.setupWithNavController(findNavController())
+        binding.appBarInclude.toolbar.setupWithNavController(findNavController())
     }
 
     override fun onStart() {
@@ -65,7 +63,7 @@ class CameraPreviewFragment : BaseFragment(R.layout.fragment_camera) {
             cameraProvider?.unbindAll()
             val cameraSelector = CameraSelector.Builder().requireLensFacing(lensFacing).build()
             cameraProvider?.bindToLifecycle(viewLifecycleOwner, cameraSelector, preview)
-            preview.setSurfaceProvider(previewView.surfaceProvider)
+            preview.setSurfaceProvider(binding.previewView.surfaceProvider)
         }, getMainExecutor(requireContext()))
     }
 

@@ -11,22 +11,22 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.Snackbar.LENGTH_INDEFINITE
-import io.sandbox.R
+import dagger.hilt.android.AndroidEntryPoint
 import io.sandbox.app.base.view.BaseFragment
-import kotlinx.android.synthetic.main.app_bar_layout.*
-import kotlinx.android.synthetic.main.fragment_sensor_list.*
+import io.sandbox.databinding.FragmentSensorListBinding
 
-class SensorListFragment : BaseFragment(R.layout.fragment_sensor_list) {
+@AndroidEntryPoint
+class SensorListFragment : BaseFragment<FragmentSensorListBinding>(FragmentSensorListBinding::inflate) {
 
     private val viewModel by viewModels<SensorListViewModel>()
     private val listAdapter = SensorListAdapter(::onSensorSelected)
-    private val sensorDataSnackbar by lazy { Snackbar.make(coordinator, "", LENGTH_INDEFINITE) }
+    private val sensorDataSnackbar by lazy { Snackbar.make(binding.coordinator, "", LENGTH_INDEFINITE) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        toolbar.setupWithNavController(findNavController())
-        list.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL))
-        list.adapter = listAdapter
+        binding.appBarInclude.toolbar.setupWithNavController(findNavController())
+        binding.list.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL))
+        binding.list.adapter = listAdapter
         sensorDataSnackbar.view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text).maxLines = 12
         sensorDataSnackbar.setAction(android.R.string.cancel) {
             viewModel.onSensorInfoDismiss()
@@ -35,7 +35,7 @@ class SensorListFragment : BaseFragment(R.layout.fragment_sensor_list) {
     }
 
     override fun onDestroyView() {
-        list.adapter = null
+        binding.list.adapter = null
         super.onDestroyView()
     }
 

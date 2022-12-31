@@ -2,40 +2,37 @@ package io.sandbox.app.main.routes
 
 import android.content.res.Resources
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import io.sandbox.R
 import io.sandbox.app.extension.color
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.list_item_route.*
+import io.sandbox.databinding.ListItemRouteBinding
 
 class RouteListAdapter(
     private val onRouteSelect: (Route) -> Unit
 ) : ListAdapter<Route, RouteListAdapter.ViewHolder>(ItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.list_item_route, parent, false),
+        ListItemRouteBinding.inflate(LayoutInflater.from(parent.context), parent, false),
         onRouteSelect
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position))
 
     class ViewHolder(
-        override val containerView: View,
+        private val binding: ListItemRouteBinding,
         private val onRouteSelect: (Route) -> Unit
-    ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         val res: Resources
-            get() = containerView.resources
+            get() = itemView.resources
 
         fun bind(route: Route) {
-            title.text = res.getString(route.titleResId)
-            description.text = res.getString(route.descriptionResId)
-            containerView.setBackgroundColor(res.color(route.colorResId))
-            containerView.setOnClickListener { onRouteSelect(route) }
+            binding.title.text = res.getString(route.titleResId)
+            binding.description.text = res.getString(route.descriptionResId)
+            itemView.setBackgroundColor(res.color(route.colorResId))
+            itemView.setOnClickListener { onRouteSelect(route) }
         }
     }
 
