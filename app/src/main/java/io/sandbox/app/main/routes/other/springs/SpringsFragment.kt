@@ -10,10 +10,10 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import io.sandbox.app.base.view.BaseFragment
+import io.sandbox.app.base.view.BindingFragment
 import io.sandbox.databinding.FragmentSpringsBinding
 
-class SpringsFragment : BaseFragment<FragmentSpringsBinding>(FragmentSpringsBinding::inflate) {
+class SpringsFragment : BindingFragment<FragmentSpringsBinding>(FragmentSpringsBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

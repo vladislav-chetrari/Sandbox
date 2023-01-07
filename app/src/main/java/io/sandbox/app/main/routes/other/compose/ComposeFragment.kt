@@ -6,11 +6,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
-import io.sandbox.app.base.view.BaseFragment
+import io.sandbox.app.base.view.BindingFragment
 import io.sandbox.databinding.FragmentComposeBinding
 
 @AndroidEntryPoint
-class ComposeFragment : BaseFragment<FragmentComposeBinding>(FragmentComposeBinding::inflate) {
+class ComposeFragment : BindingFragment<FragmentComposeBinding>(FragmentComposeBinding::inflate) {
 
     private val viewModel by viewModels<ComposeViewModel>()
 

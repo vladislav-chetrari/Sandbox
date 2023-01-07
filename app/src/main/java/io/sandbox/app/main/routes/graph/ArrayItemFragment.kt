@@ -7,10 +7,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
-import io.sandbox.app.base.view.BaseFragment
+import io.sandbox.app.base.view.BindingFragment
 import io.sandbox.databinding.FragmentArrayItemBinding
 
-class ArrayItemFragment : BaseFragment<FragmentArrayItemBinding>(FragmentArrayItemBinding::inflate) {
+class ArrayItemFragment : BindingFragment<FragmentArrayItemBinding>(FragmentArrayItemBinding::inflate) {
 
     private val args by navArgs<ArrayItemFragmentArgs>()
 

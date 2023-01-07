@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import io.sandbox.app.base.view.BaseFragment
+import io.sandbox.app.base.view.BindingFragment
 import io.sandbox.app.main.routes.Route.*
 import io.sandbox.databinding.FragmentRoutesBinding
 
-class RoutesFragment : BaseFragment<FragmentRoutesBinding>(FragmentRoutesBinding::inflate) {
+class RoutesFragment : BindingFragment<FragmentRoutesBinding>(FragmentRoutesBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

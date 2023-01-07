@@ -19,10 +19,10 @@ import androidx.core.content.PermissionChecker.checkSelfPermission
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import io.sandbox.R
-import io.sandbox.app.base.view.BaseFragment
+import io.sandbox.app.base.view.BindingFragment
 import io.sandbox.databinding.FragmentCameraBinding
 
-class CameraPreviewFragment : BaseFragment<FragmentCameraBinding>(FragmentCameraBinding::inflate) {
+class CameraPreviewFragment : BindingFragment<FragmentCameraBinding>(FragmentCameraBinding::inflate) {
 
     private lateinit var activityResultLauncher: ActivityResultLauncher<String>
     private var cameraProvider: ProcessCameraProvider? = null

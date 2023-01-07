@@ -11,13 +11,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
-import io.sandbox.app.base.view.BaseFragment
+import io.sandbox.app.base.view.BindingFragment
 import io.sandbox.app.extension.load
 import io.sandbox.data.db.entity.Character
 import io.sandbox.databinding.FragmentCharacterDetailsBinding
 
 @AndroidEntryPoint
-class CharacterDetailsFragment : BaseFragment<FragmentCharacterDetailsBinding>(FragmentCharacterDetailsBinding::inflate) {
+class CharacterDetailsFragment : BindingFragment<FragmentCharacterDetailsBinding>(FragmentCharacterDetailsBinding::inflate) {
 
     private val args by navArgs<CharacterDetailsFragmentArgs>()
     private val viewModel by viewModels<CharacterDetailsViewModel>()

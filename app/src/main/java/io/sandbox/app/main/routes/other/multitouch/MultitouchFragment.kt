@@ -5,11 +5,11 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import io.sandbox.R
-import io.sandbox.app.base.view.BaseFragment
+import io.sandbox.app.base.view.BindingFragment
 import io.sandbox.app.extension.drawable
 import io.sandbox.databinding.FragmentMultitouchBinding
 
-class MultitouchFragment : BaseFragment<FragmentMultitouchBinding>(FragmentMultitouchBinding::inflate) {
+class MultitouchFragment : BindingFragment<FragmentMultitouchBinding>(FragmentMultitouchBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

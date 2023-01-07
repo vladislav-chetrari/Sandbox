@@ -14,13 +14,13 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import io.sandbox.R
-import io.sandbox.app.base.view.BaseFragment
+import io.sandbox.app.base.view.BindingFragment
 import io.sandbox.data.network.model.response.CharacterResponse
 import io.sandbox.data.type.CharacterStatus
 import io.sandbox.databinding.FragmentCharacterListBinding
 
 @AndroidEntryPoint
-class CharacterListFragment : BaseFragment<FragmentCharacterListBinding>(FragmentCharacterListBinding::inflate) {
+class CharacterListFragment : BindingFragment<FragmentCharacterListBinding>(FragmentCharacterListBinding::inflate) {
 
     private val viewModel by viewModels<CharacterListViewModel>()
     private val listAdapter = CharacterListAdapter(::onCharacterSelected)

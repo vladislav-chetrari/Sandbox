@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.Snackbar.LENGTH_INDEFINITE
 import dagger.hilt.android.AndroidEntryPoint
-import io.sandbox.app.base.view.BaseFragment
+import io.sandbox.app.base.view.BindingFragment
 import io.sandbox.databinding.FragmentSensorListBinding
 
 @AndroidEntryPoint
-class SensorListFragment : BaseFragment<FragmentSensorListBinding>(FragmentSensorListBinding::inflate) {
+class SensorListFragment : BindingFragment<FragmentSensorListBinding>(FragmentSensorListBinding::inflate) {
 
     private val viewModel by viewModels<SensorListViewModel>()
     private val listAdapter = SensorListAdapter(::onSensorSelected)
